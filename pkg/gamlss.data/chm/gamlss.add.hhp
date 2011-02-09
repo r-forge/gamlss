@@ -1,0 +1,18 @@
+[OPTIONS]
+Auto Index=Yes
+Contents file=gamlss.add.toc
+Compatibility=1.1 or later
+Compiled file=gamlss.add.chm
+Default topic=00Index.html
+Display compile progress=No
+Full-text search=Yes
+Full text search stop list file=..\..\..\gnuwin32\help\R.stp
+Title=R Help for package gamlss.add
+
+
+[FILES]
+00Index.html
+ga.html
+gamlss.ga.html
+gamlss.nn.html
+nn.html

@@ -1,0 +1,116 @@
+<html><head><title>Hodges data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>hodges(gamlss.util)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   hodges">
+<param name="keyword" value="R:   hodges1">
+<param name="keyword" value=" Hodges data">
+</object>
+
+
+<h2>Hodges data</h2>
+
+
+<h3>Description</h3>
+
+<p>
+There two data sets contain data used in Hodges (1998).  In addition 
+to the data used in that manuscript, it contains other data items.
+</p>
+<p>
+The original data consists of two matrices of dimensions of 341x6 and a 
+45x4 respectively.
+</p>
+<p>
+The first matrix <code>hodges</code> describes plans.  The information for each plan is:  
+the state, a two-character code that identifies plans within state, the total premium for 
+an individual, the total premium for a family, the total enrollment of 
+federal employees as individuals, and the total enrollment of federal 
+employees as families.
+</p>
+<p>
+The second matrix, <code>hodges</code>, describes states.  The information for each state is:  
+its two-letter abbreviation, the state average expenses per admission 
+(from American Medical Association 1991 Annual Survey of Hospitals), 
+population (1990 Census), and the region (from the Marion Merrill Dow 
+Managed Care Digest 1991).  
+</p>
+<p>
+The Hodges manuscript used these variables:
+Plan level:  individual premium, individual enrollment. 
+State level:  expenses per admission, region.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(hodges)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+Two data frames the first with 341 observations on the following 6 variables.
+<dl>
+<dt><code>state</code></dt><dd>a factor with 45 levels <code>AL</code> <code>AZ</code> <code>CA</code> <code>CO</code> 
+<code>CT</code> <code>DC</code> <code>DE</code> <code>FL</code> 
+<code>GA</code> <code>GU</code> <code>HI</code> <code>IA</code> 
+<code>ID</code> <code>IL</code> <code>IN</code> <code>KS</code> 
+<code>KY</code> <code>LA</code> <code>MA</code> <code>MD</code> 
+<code>ME</code> <code>MI</code> <code>MN</code> <code>MO</code> 
+<code>NC</code> <code>ND</code> <code>NE</code> <code>NH</code> 
+<code>NJ</code> <code>NM</code> <code>NV</code> <code>NY</code> 
+<code>OH</code> <code>OK</code> <code>OR</code> <code>PA</code> 
+<code>PR</code> <code>RI</code> <code>SC</code> <code>TN</code> 
+<code>TX</code> <code>UT</code> <code>VA</code> <code>WA</code> 
+<code>WI</code></dd>
+<dt><code>plan</code></dt><dd>a two-character code that identifies plans within state declared here as factor with 325 levals.</dd>
+<dt><code>prind</code></dt><dd>a numeric vector showing the total premium for an individual</dd>
+<dt><code>prfam</code></dt><dd>a numeric vector showing the total premium for a family</dd>
+<dt><code>enind</code></dt><dd>a numeric vector showing the total enrollment of federal employees as individuals</dd>
+<dt><code>enfam</code></dt><dd>a numeric vector showing the total enrollment of federal employees as families.</dd>
+</dl>
+<p>
+and the second with 45 observations on the following 4 variables
+<dl>
+<dt><code>State</code></dt><dd>a factor with levels same as state above </dd>
+<dt><code>expe</code></dt><dd>a numeric vector showing the state average expenses per admission (from American Medical Association 1991 Annual Survey of Hospitals)</dd>
+<dt><code>pop</code></dt><dd>a numeric vector shoing the population (1990 Census)</dd>
+<dt><code>region</code></dt><dd>the region (from the Marion Merrill Dow Managed Care Digest 1991), 
+a factor with levels <code>MA</code> <code>MT</code> <code>NC</code> <code>NE</code> <code>PA</code> <code>SA</code> <code>SC</code></dd>
+</dl>
+
+<h3>Source</h3>
+
+<p>
+<a href="http://www.biostat.umn.edu/~hodges/">http://www.biostat.umn.edu/~hodges/</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Hodges, J. S. (1998). Some algebra and geometry for hierarchical
+models, applied to diadnostics. <EM>J. R. Statist. Soc. B.</EM>, <B>60</B> pp 497:536.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(hodges)
+attach(hodges)
+plot(prind~state, cex=1, cex.lab=1.5, cex.axis=1, cex.main=1.2)
+str(hodges)
+data(hodges1)
+str(hodges1)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.util</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

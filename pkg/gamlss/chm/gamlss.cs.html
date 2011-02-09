@@ -1,0 +1,131 @@
+<html><head><title>Support for Function cs(), s() and vc()</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>gamlss.cs(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   gamlss.cs">
+<param name="keyword" value="R:   gamlss.scs">
+<param name="keyword" value="R:   gamlss.vc">
+<param name="keyword" value=" Support for Function cs() s() and vc()">
+</object>
+
+
+<h2>Support for Function cs() s() and vc()</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This is support for the functions cs(), s() and vc().
+It is not intended to be called directly by users. The function <code>gamlss.cs</code> is based on the R function <code>smooth.spline</code>
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gamlss.cs(x, y = NULL, w = NULL, df = 5, spar = NULL, cv = FALSE,  nknots = NULL,
+         all.knots = TRUE, df.offset = 0, penalty = 1, 
+         control.spar = list(low = -1.5, high = 2), xeval = NULL)
+gamlss.scs(x, y = NULL, w = NULL, df = NULL, spar = NULL, cv = FALSE, all.knots = FALSE, 
+          nknots = NULL, keep.data = TRUE, df.offset = 0, penalty = 1.4, 
+          control.spar = list(low = -1.5, high = 2), xeval = NULL)
+gamlss.vc(x, y = NULL, w = NULL, df = 5, spar = NULL, cv = FALSE, all.knots = TRUE, 
+          df.offset = 0, penalty = 1, control.spar = list(low = -1.5, high = 2), 
+          xeval = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+the design matrix</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+the response variable</td></tr>
+<tr valign="top"><td><code>w</code></td>
+<td>
+prior weights</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+effective degrees of freedom </td></tr>
+<tr valign="top"><td><code>spar</code></td>
+<td>
+spar the smoothing parameter</td></tr>
+<tr valign="top"><td><code>cv</code></td>
+<td>
+options for the <code>smooth.spline</code> function not to use here </td></tr>
+<tr valign="top"><td><code>nknots</code></td>
+<td>
+options for the <code>smooth.spline</code> function not to use here </td></tr>
+<tr valign="top"><td><code>all.knots</code></td>
+<td>
+options for the <code>smooth.spline</code> function not to use here </td></tr>
+<tr valign="top"><td><code>df.offset</code></td>
+<td>
+options for the <code>smooth.spline</code> function not to use here </td></tr>
+<tr valign="top"><td><code>keep.data</code></td>
+<td>
+whether to keep data</td></tr>
+<tr valign="top"><td><code>penalty</code></td>
+<td>
+options for the <code>smooth.spline</code> function not to use here </td></tr>
+<tr valign="top"><td><code>control.spar</code></td>
+<td>
+control for spar.  It can be changed through <code><a href="cs.html">cs</a></code></td></tr>
+<tr valign="top"><td><code>xeval</code></td>
+<td>
+used in prediction </td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Returns a class "smooth.spline" object with 
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>residuals</code></td>
+<td>
+The residuals of the fit</td></tr>
+<tr valign="top"><td><code>fitted.values</code></td>
+<td>
+The smoothing values </td></tr>
+<tr valign="top"><td><code>var</code></td>
+<td>
+the variance for the fitted smoother</td></tr>
+<tr valign="top"><td><code>lambda</code></td>
+<td>
+the final value for spar</td></tr>
+<tr valign="top"><td><code>nl.df</code></td>
+<td>
+the smoothing degrees of freedom excluding the constant and linear terms, i.e. (df-2)</td></tr>
+<tr valign="top"><td><code>coefSmo</code></td>
+<td>
+this is a list containing among others the knots and the coefficients</td></tr>
+</table>
+<p>
+ 
+...</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>, <code><a href="cs.html">cs</a></code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 2.0-0 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

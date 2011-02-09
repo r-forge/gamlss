@@ -1,0 +1,140 @@
+<html><head><title>Specify Simple Random Effect In A GAMLSS Formula</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>ra(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   ra">
+<param name="keyword" value=" Specify Simple Random Effect In A GAMLSS Formula">
+</object>
+
+
+<h2>Specify Simple Random Effect In A GAMLSS Formula</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This is an experimental smoother for use with factors in gamlss(). 
+It allows the fitted values for a factor predictor to be shrunk towards the overall mean, 
+where the amount of shrinking depends either on lambda, or on the equivalent degrees of freedom (df). 
+</p>
+<p>
+This function is slightly more general, but considerably slower than the  <code><a href="random.html">random</a></code> function .
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ra(xfactor, xvector = NULL, df = NULL, lambda = NULL, order = 0, 
+   estimate = FALSE, expl = NULL, data1 = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>xfactor</code></td>
+<td>
+a factor defining the subjects grouping in a one factor random effect model term e.g. <code>xfactor=Subjects</code> </td></tr>
+<tr valign="top"><td><code>xvector</code></td>
+<td>
+a variable if interaction with the <code>xfactor</code> is required <code>xvector</code> (experimental) </td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+required equivalent degrees of freedom e.g. <code>df=10</code></td></tr>
+<tr valign="top"><td><code>lambda</code></td>
+<td>
+the smoothing parameter which is the reciprocal (i.e. inverse) of the variance of the random effect</td></tr>
+<tr valign="top"><td><code>order</code></td>
+<td>
+the order of the difference in the matrix D, <code>order=1</code> is for simple random effects, 
+<code>order=2</code> is for random walk order 1 and <code>order=3</code> is for random walk order 2 </td></tr>
+<tr valign="top"><td><code>estimate</code></td>
+<td>
+whether to estimate the lambda parameter within the backfitting iterations (very unreliable). Set by default to <code>estimate=FALSE</code>. 
+[The lambda parameter can be more accurately estimated by selecting the corresponding smoothing degrees of freedom using <code><a href="findhyper.html">find.hyper</a></code>] </td></tr>
+<tr valign="top"><td><code>expl</code></td>
+<td>
+this allows an explanatory variable at the subject level to be fitted e.g. <code>expl=~x1+x2</code></td></tr>
+<tr valign="top"><td><code>data1</code></td>
+<td>
+the data frame for the subject level variables <code>data1</code></td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+xfactor is returned with class "smooth", with an attribute named "call" which is to be evaluated in the backfitting  <code>additive.fit()</code> 
+called by <code>gamlss()</code></p>
+
+<h3>Warning</h3>
+
+<p>
+This is experimental and likely to change soon
+</p>
+
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="random.html">random</a></code>,  <code><a href="gamlss.html">gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aids)
+attach(aids)
+# fitting a loess curve with span=0.4 plus the a quarterly  effect 
+aids1&lt;-gamlss(y~lo(x,span=0.4)+qrt,data=aids,family=PO) # 
+# now we string the quarterly  effect using random 
+aids2&lt;-gamlss(y~lo(x,span=0.4)+ra(qrt,df=2),data=aids,family=PO) # 
+plot(x,y)
+lines(x,fitted(aids1),col="red")
+lines(x,fitted(aids2),col="purple")
+rm(aids1,aids2)
+detach(aids)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,34 @@
+[OPTIONS]
+Auto Index=Yes
+Contents file=gamlss.data.toc
+Compatibility=1.1 or later
+Compiled file=gamlss.data.chm
+Default topic=00Index.html
+Display compile progress=No
+Full-text search=Yes
+Full text search stop list file=..\..\..\gnuwin32\help\R.stp
+Title=R Help for package gamlss.data
+
+
+[FILES]
+00Index.html
+CD4.html
+LGAclaims.html
+Mums.html
+abdom.html
+aep.html
+aids.html
+alveolar.html
+bd.html
+computer.html
+fabric.html
+glass.html
+hodges.html
+lice.html
+margolin.html
+parzen.html
+rent.html
+species.html
+stylo.html
+tensile.html
+usair.html

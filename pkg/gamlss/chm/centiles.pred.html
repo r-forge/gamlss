@@ -1,0 +1,186 @@
+<html><head><title>Creating  predictive centiles values</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>centiles.pred(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   centiles.pred">
+<param name="keyword" value=" Creating  predictive centiles values">
+</object>
+
+
+<h2>Creating  predictive centiles values</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function creates predictive centiles curves for new x-values given a GAMLSS fitted model.
+The function has three options: i) for given new x-values and given percentage centiles calculates a matrix containing 
+the centiles values for y,
+ii) for given new x-values and standard normalized centile values calculates a matrix containing the centiles values for y,
+iii) for given new x-values and new y-values calculates the z-scores.  
+A restriction of the function is that it applies to models with only one explanatory variable.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+centiles.pred(obj, type = c("centiles", "z-scores", "standard-centiles"), 
+             xname = NULL, xvalues = NULL, power = NULL, yval = NULL, 
+             cent = c(0.4, 2, 10, 25, 50, 75, 90, 98, 99.6), 
+             dev = c(-4, -3, -2, -1, 0, 1, 2, 3, 4), 
+             plot = FALSE, legend = TRUE, 
+             ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+a fitted gamlss object from fitting a gamlss continuous distribution </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+the default, "centiles", gets the centiles values given in the option <code>cent</code>. 
+<code>type="standard-centiles"</code> gets the standard centiles  given in the <code>dev</code>. 
+<code>type="z-scores"</code> gets the z-scores for given y and x new values</td></tr>
+<tr valign="top"><td><code>xname</code></td>
+<td>
+the name of the unique explanatory variable (it has to be the same as in the original fitted model)</td></tr>
+<tr valign="top"><td><code>xvalues</code></td>
+<td>
+the new values for the explanatory variable where the prediction will take place</td></tr>
+<tr valign="top"><td><code>power</code></td>
+<td>
+if power transformation is needed (but read the note below)</td></tr>
+<tr valign="top"><td><code>yval</code></td>
+<td>
+the response values for a given x required for the calculation of "z-scores"</td></tr>
+<tr valign="top"><td><code>cent</code></td>
+<td>
+a vector with elements the % centile values for which the centile curves have to be evaluated</td></tr>
+<tr valign="top"><td><code>dev</code></td>
+<td>
+a vector with elements the standard normalized values for which the centile curves have to be evaluated in the option <code>type="standard-centiles"</code></td></tr>
+<tr valign="top"><td><code>plot</code></td>
+<td>
+whether to plot the "centiles" or the "standard-centiles", the default is <code>plot=FALSE</code></td></tr>
+<tr valign="top"><td><code>legend</code></td>
+<td>
+whether a legend is required in the plot or not, the default is <code>legent=TRUE</code>  </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+a vector (for option <code>type="z-scores"</code>) or a  matrix for options
+<code>type="centiles"</code> or <code>type="standard-centiles"</code>
+containing the appropriate values</p>
+
+<h3>Warning</h3>
+
+<p>
+See example below of how to use the function when power transofrmation is used for the x-variables
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+The power option should be only used if the model
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos , <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, based on ideas of Elaine Borghie 
+from the World Health Organization
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>, <code><a href="centiles.html">centiles</a></code>, <code><a href="centiles.split.html">centiles.split</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# bring the data and fit the model
+data(abdom)
+a&lt;-gamlss(y~cs(x),sigma.fo=~cs(x), data=abdom, family=BCT)
+#plot the centiles
+centiles(a,xvar=abdom$x)
+# calculate the centiles at new x values 
+newx&lt;-seq(12,40,2)
+mat &lt;- centiles.pred(a, xname="x", xvalues=newx )
+mat
+# now plot the centiles  
+ mat &lt;- centiles.pred(a, xname="x",xvalues=newx, plot=TRUE )
+# calculate standard-centiles for new x values using the fitted model
+newx &lt;- seq(12,40,2)
+ mat &lt;- centiles.pred(a, xname="x",xvalues=newx, type="standard-centiles" )
+ mat
+# now plot the centiles  
+mat &lt;- centiles.pred(a, xname="x",xvalues=newx, type="s", plot = TRUE )
+# create new y and x values and plot them in the previous plot
+newx &lt;- c(20,21.2,23,20.9,24.2,24.1,25)
+newy &lt;- c(130,121,123,125,140,145,150)
+for(i in 1:7) points(newx[i],newy[i],col="blue")
+# now calculate their z-scores
+znewx &lt;- centiles.pred(a, xname="x",xvalues=newx,yval=newy, type="z-scores" )
+znewx
+# now with transformed x-variable within the formula
+aa&lt;-gamlss(y~cs(x^0.5),sigma.fo=~cs(x^0.5), data=abdom, family=BCT)  
+centiles(aa,xvar=abdom$x)
+mat &lt;- centiles.pred(aa, xname="x",xvalues=c(30) )
+xx&lt;-rep(mat[,1],9)
+yy&lt;-mat[,2:10]
+points(xx,yy,col="red")
+# now with x-variable previously transformed 
+nx&lt;-abdom$x^0.5
+aa&lt;-gamlss(y~cs(nx),sigma.fo=~cs(nx), data=abdom, family=BCT)
+centiles(aa, xvar=abdom$x)
+newd&lt;-data.frame( abdom, nx=abdom$x^0.5)
+mat &lt;-  centiles.pred(aa, xname="nx", xvalues=c(30), power=0.5, data=newd)
+xxx&lt;-rep(mat[,1],9)
+yyy&lt;-mat[,2:10]
+points(xxx,yyy,col="red")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

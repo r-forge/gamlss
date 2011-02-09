@@ -1,0 +1,79 @@
+<html><head><title>Aids Cases in England and Wales</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>aids(gamlss.util)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   aids">
+<param name="keyword" value=" Aids Cases in England and Wales">
+</object>
+
+
+<h2>Aids Cases in England and Wales</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The quarterly reported AIDS cases in the U.K. from
+January 1983 to March 1994 obtained from the Public Health
+Laboratory Service, Communicable Disease Surveillance Centre,
+London.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(aids)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+A data frame with 45 observations on the following 3 variables.
+<dl>
+<dt>y</dt><dd>the number of quarterly aids cases in England and Wales: a numeric vector</dd>
+<dt>x</dt><dd>time in months from January 1983, 1:45 : a numeric vector</dd>
+<dt>qrt</dt><dd>the quarterly seasonal effect a factor with 4 levels, [1=Q1 (Jan-March), 2=Q2 (Apr-June), 3=Q3 (July-Sept), 4=Q4 (Oct-Dec)]</dd>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+The counts y can be modelled using  a (smooth) Poisson regression  model in time x with the quarterly effects i.e. 
+cs(x,df=7)+qrt. Overdispersion persists,  so use a Negative Binomial distribution of type I or II.  
+The data also can be used to find a break point in time, see Rigby and Stasinopoulos (1992).
+</p>
+
+
+<h3>Source</h3>
+
+<p>
+Public Health
+Laboratory Service, Communicable Disease Surveillance Centre, London.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Stasinopoulos, D.M. and Rigby, R. A. (1992). Detecting break points in generalized linear models.
+<EM>Computational Statistics and Data Analysis</EM>, <B>13</B>, 461&ndash;471.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aids)
+attach(aids)
+plot(x,y,pch=21,bg=c("red","green3","blue","yellow")[unclass(qrt)])
+detach(aids)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.util</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

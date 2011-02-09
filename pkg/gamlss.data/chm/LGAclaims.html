@@ -1,0 +1,82 @@
+<html><head><title>The LGA Claims Data files for GAMLSS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>LGAclaims(gamlss.data)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   LGAclaims">
+<param name="keyword" value=" The LGA Claims Data files for GAMLSS">
+</object>
+
+
+<h2>The LGA Claims Data files for GAMLSS</h2>
+
+
+<h3>Description</h3>
+
+<p>
+These are several small data files usefull for gamlss fits.
+</p>
+<p>
+LGAclaims: the data were given by Gillian Heller and can be found in de Jong and Heller (2007).
+This data set records the number of third party claims, <code>Claims</code>, in a twelve month
+period between 1984-1986 in each of 176 geographical areas (local government areas) in New South Wales,
+Australia. Areas are grouped into thirteen statistical divisions (<code>SD</code>). Other
+recorded variables are the number of accidents, <code>Accidents</code>,  the number of people killed or
+injured and population with all variables classified according to area.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+
+
+data(LGAclaims)
+</pre>
+
+
+<h3>Format</h3>
+
+<p>
+Data frames each with the following variable.
+<dl>
+<dt>Claims</dt><dd>the number of third party claims</dd>
+<dt>LGA</dt><dd>Local government areas in New South Wales</dd>
+<dt>SD</dt><dd>statistical divisions</dd>
+<dt>Pop$_$density</dt><dd>population density</dd>
+<dt>KI</dt><dd>the number of people killed or injured</dd>
+<dt>Accidents</dt><dd>the number of accidents</dd>
+<dt>Population</dt><dd>population size</dd>
+<dt>L$_$KI</dt><dd>log of KI</dd>
+<dt>L$_$Accidents</dt><dd>the log of the number of accidents</dd>
+<dt>L$_$Population</dt><dd>log Population</dd>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+Data sets usefull for the GAMLSS booklet
+</p>
+
+
+<h3>References</h3>
+
+<p>
+de Jong, P. and Heller G. (2007)  <EM>Generalized Linear Models for Insurance Data </EM>, Cambridge University Press
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(LGAclaims)
+with(LGAclaims, plot(data.frame(Claims, Pop_density, KI, Accidents, Population)))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.data</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

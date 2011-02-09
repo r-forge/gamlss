@@ -1,0 +1,122 @@
+<html><head><title>A function to calculate the Q-statistics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Q.stats(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Q.stats">
+<param name="keyword" value=" A function to calculate the Q-statistics">
+</object>
+
+
+<h2>A function to calculate the Q-statistics</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function calculates and prints the Q-statistics which are useful to test normality of the residuals within a range 
+of an independent variable, for example age in centile estimation, see Royston and Wright (2000).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Q.stats(obj, xvar = NULL, xcut.points = NULL, n.inter = 10, zvals = TRUE, 
+        save = TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+a GAMLSS object or any other residual vector</td></tr>
+<tr valign="top"><td><code>xvar</code></td>
+<td>
+a unique explanatory variable</td></tr>
+<tr valign="top"><td><code>xcut.points</code></td>
+<td>
+the x-axis cut off points e.g. <code>c(20,30)</code>. If <code>xcut.points=NULL</code> then the <code>n.inter</code> argument is activated </td></tr>
+<tr valign="top"><td><code>n.inter</code></td>
+<td>
+if <code>xcut.points=NULL</code> this argument gives the number of intervals in which the x-variable will be split, with default 4</td></tr>
+<tr valign="top"><td><code>zvals</code></td>
+<td>
+if <code>TRUE</code> the output matix contains the individual z's rather that  Q statistics</td></tr>
+<tr valign="top"><td><code>save</code></td>
+<td>
+whether to save the Q-statistics or not with default equal to <code>TRUE</code>. 
+In this case the functions produce a matrix giving individual Q (or z) statistics and the final aggregate Q's</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+A matrix containing the individual Q's and the aggregate Q-statistics</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>, with contributions from Elaine Borghie
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Royston P. and Wright E. M. (2000) Goodness of fit statistics for the age-specific reference intervals. 
+<EM>Statistics in Medicine</EM>, 19, pp 2943-2962.  
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>, <code><a href="centiles.split.html">centiles.split</a></code>,  <code><a href="wp.html">wp</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(abdom)
+h&lt;-gamlss(y~cs(x,df=3), sigma.formula=~cs(x,1), family=BCT, data=abdom) 
+Q.stats(h,xvar=abdom$x,n.inter=8)
+Q.stats(h,xvar=abdom$x,n.inter=8,zvals=FALSE)
+rm(h)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,88 @@
+<html><head><title>The Margolin Data files for GAMLSS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>margolin(gamlss.data)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   margolin">
+<param name="keyword" value=" The Margolin Data files for GAMLSS">
+</object>
+
+
+<h2>The Margolin Data files for GAMLSS</h2>
+
+
+<h3>Description</h3>
+
+<p>
+margolin: Margolin et al. (1981) present data from an Ames Salmonella assay,
+where y is the number of revertant colonies observed on a plate given a dose y of quinoline.
+The data were subsequently analysed by Breslow (1984), Lawless (1987) and Saha and Paul (2005).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+data(margolin)
+</pre>
+
+
+<h3>Format</h3>
+
+<p>
+Data frames each with the following variable.
+<dl>
+</p>
+
+<dt><code>y</code></dt><dd>a numeric vector showing the number of revertant colonies observed on a plate given a dose
+x of quinoline.</dd>
+<dt><code>x</code></dt><dd>a numeric vector showing a a dose
+x of quinoline.</dd>
+
+<p>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+Data sets usefull for the GAMLSS booklet
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Breslow, N. (1984) Extra-Poisson variation in log-linear models. <EM>Applied Statistics</EM>, <B>33</B>, 38-44.
+</p>
+<p>
+Hand <EM>et al.</EM> (1994) <EM>A handbook of small data sets</EM>. Chapman and Hall, London.
+</p>
+<p>
+Lawless, J.F. (1987) Negative binomial and mixed Poisson regression. <EM>The Canadian Journal of Statistics</EM>,
+<B>15</B>, 209-225.
+</p>
+<p>
+Margolin, B.H., Kaplan, N. and Zeiger, E. (1981) Statistical analysis of the Ames salmonella/microsome test.
+<EM>Proceedings of the National Academy of Science</EM>, U.S.A., <B>76</B>, 3779-3783.
+</p>
+<p>
+Saha, K. and Paul, S. (2005) Bias-Corrected Maximum Likelihood Estimator of the Negative Binomial Dispersion
+Parameter.
+<EM>Biometrics</EM>, <B>61</B>, 179-185
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(margolin)
+with(margolin, plot(y~x))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.data</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

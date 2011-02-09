@@ -1,0 +1,136 @@
+<html><head><title>Plotting the Profile Deviance for one of the Parameters in a GAMLSS model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>prof.dev(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   prof.dev">
+<param name="keyword" value=" Plotting the Profile Deviance for one of the Parameters in a GAMLSS model">
+</object>
+
+
+<h2>Plotting the Profile Deviance for one of the Parameters in a GAMLSS model</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This functions plots the profile deviance of one of the (four) parameters in a GAMLSS model. It can be used if one 
+of the parameters <code>mu</code>, <code>sigma</code>, <code>nu</code> or <code>tau</code> is a constant (not a function of explanatory variables) to obtain 
+a profile confidence intervals.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+prof.dev(object, which = NULL, min = NULL, max = NULL, step = NULL, 
+          startlastfit = TRUE, type = "o", plot = TRUE, perc = 95, 
+          ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+A fitted GAMLSS model</td></tr>
+<tr valign="top"><td><code>which</code></td>
+<td>
+which parameter to  get the profile deviance e.g. <code>which="tau"</code></td></tr>
+<tr valign="top"><td><code>min</code></td>
+<td>
+the minimum value for the parameter e.g. <code>min=1</code></td></tr>
+<tr valign="top"><td><code>max</code></td>
+<td>
+the maximum value for the parameter e.g.  <code>max=20</code></td></tr>
+<tr valign="top"><td><code>step</code></td>
+<td>
+how often to evaluate the global deviance (defines the step length of the grid for the parameter) e.g. <code>step=1</code> </td></tr>
+<tr valign="top"><td><code>startlastfit</code></td>
+<td>
+whether to start fitting from the last fit or not, default value is <code>startlastfit=TRUE</code>  </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+what type of plot required. This is the same as in <code>type</code> for <code>plot</code>, default value is <code>type="o"</code>, that is, both line and points </td></tr>
+<tr valign="top"><td><code>plot</code></td>
+<td>
+whether to plot, <code>plot=TRUE</code> or save the results, <code>plot=FALSE</code>  </td></tr>
+<tr valign="top"><td><code>perc</code></td>
+<td>
+what % confidence interval is required </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function can be use to provide likelihood based confidence intervals for a parameter for which a constant model (i.e. no explanatory model) is fitted and
+consequently for checking the adequacy of a particular values of the parameter. This can be used to check the adequacy of one distribution (e.g. Box-Cox Cole and Green) 
+nested within another (e.g. Box-Cox power exponential). For example one can test whether a Box-Cox Cole and Green (Box-Cox-normal) distribution 
+or a Box-Cox power exponential is appropriate by plotting the profile of the parameter <code>tau</code>. 
+A profile deviance showing support for  <code>tau=2</code> indicates adequacy of the Box-Cox Cole and Green (i.e. Box-Cox normal) distribution.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A plot of profile global deviance</p>
+
+<h3>Warning</h3>
+
+<p>
+A dense grid (i.e. small step) evaluation of the global deviance can take a long time, so start with a sparse grid (i.e. large step) 
+and decrease  gradually the step length for more accuracy.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Calliope Akantziliotou, Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a> and Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).  
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>,  <code><a href="prof.term.html">prof.term</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(abdom)
+h&lt;-gamlss(y~cs(x,df=3), sigma.formula=~cs(x,1), family=BCT, data=abdom) 
+prof.dev(h,"nu",min=-2.000,max=2,step=0.25,type="l")
+rm(h)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

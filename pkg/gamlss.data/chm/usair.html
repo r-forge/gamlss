@@ -1,0 +1,76 @@
+<html><head><title>US air pollution data set</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>usair(gamlss.data)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   usair">
+<param name="keyword" value=" US air pollution data set">
+</object>
+
+
+<h2>US air pollution data set</h2>
+
+
+<h3>Description</h3>
+
+<p>
+US air pollution data set taken from  Hand et al. (1994) data set 26, USAIR.DAT, originally from 
+Sokal and Rohlf (1981).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(usair)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+A data frame with 41 observations on the following 7 variables.
+<dl>
+<dt>y</dt><dd>a numeric vector: sulpher dioxide concentration in air mgs. per cubic metre in 41 cities in the USA</dd>
+<dt>x1</dt><dd>a numeric vector: average annual temperature in degrees F</dd>
+<dt>x2</dt><dd>a numeric vector: number of manufacturers employing &gt;20 workers</dd>
+<dt>x3</dt><dd>a numeric vector: population size in thousands</dd>
+<dt>x4</dt><dd>a numeric vector: average annual wind speed in miles per hour</dd>
+<dt>x5</dt><dd>a numeric vector: average annual rainfall in inches</dd>
+<dt>x6</dt><dd>a numeric vector: average number of days rainfall per year</dd>
+</dl>
+
+<h3>Source</h3>
+
+<p>
+Hand et al. (1994) data set 26, USAIR.DAT, originally from 
+Sokal and Rohlf (1981)
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Hand, D. J., Daly, F., Lunn, A. D., McConway, K. J. and Ostrowski, E. (1994),
+A handbook of small data sets, Chapman and Hall, London.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(usair)
+str(usair) 
+plot(usair)
+# a possible gamlss model
+# gamlss(library)
+#ap&lt;-gamlss(y~cs(x1,2)+x2+x3+cs(x4,2)+x5+cs(x6,3)+x4:x5, 
+#               data=usair, family=GA(mu.link="inverse"))
+# 
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.data</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

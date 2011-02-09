@@ -1,0 +1,79 @@
+<html><head><title>The Tensile Data files for GAMLSS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>tensile(gamlss.util)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   tensile">
+<param name="keyword" value=" The Tensile Data files for GAMLSS">
+</object>
+
+
+<h2>The Tensile Data files for GAMLSS</h2>
+
+
+<h3>Description</h3>
+
+<p>
+tensile: These data  come from Quesenberry and Hales (1980)  and were also reproduced in Hand <EM>et al.</EM> (1994),
+data set 180, page 140. They contain measurements of tensile strength of polyester fibres and the authors
+were trying to check if they were consistent with the lognormal distribution.
+According to Hand <EM>et al.</EM> (1994) "these data follow from a preliminary transformation.
+If the lognormal hypothesis is correct, these data should have been uniformly distributed".
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+
+data(tensile)
+
+</pre>
+
+
+<h3>Format</h3>
+
+<p>
+Data frames each with the following variable.
+<dl>
+</p>
+
+<dt><code>str</code></dt><dd>a numeric vector showing the tensile strength</dd>
+
+<p>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+Data sets usefull for the GAMLSS booklet
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Hand <EM>et al.</EM> (1994) <EM>A handbook of small data sets</EM>. Chapman and Hall, London.
+</p>
+<p>
+Quesenberry, C. and Hales, C. (1980). Concentration bands for uniformily plots.
+<EM>Journal of Statistical Computation and Simulation</EM>, <B>11</B>, 41:53.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(tensile)
+with(tensile,hist(str))
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.util</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,79 @@
+<html><head><title>The Hospital Stay Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>aep(gamlss.util)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   aep">
+<param name="keyword" value=" The Hospital Stay Data">
+</object>
+
+
+<h2>The Hospital Stay Data</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The data, 1383 observations, are from a study at the Hospital del
+Mar, Barcelona during the years 1988 and 1990, Gange <EM>et
+al.</EM> (1996).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(aep)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+A data frame with 1383 observations on the following 8 variables.
+<dl>
+<dt>los</dt><dd>the total number of days patients spent in hospital: a discrete vector</dd>
+<dt>noinap</dt><dd>the number of inappropriate days spent in hospital: a discrete vector </dd>
+<dt>loglos</dt><dd>the log(los/10): a numeric vector</dd>
+<dt>sex</dt><dd>the gender of patient: a factor with levels <code>1</code>=male, <code>2</code>=female</dd>
+<dt>ward</dt><dd>the type of ward in the hospital: a factor with levels <code>1</code>=medical <code>2</code>=surgical, <code>3</code>=others</dd>
+<dt>year</dt><dd>the specific year 1988 or 1990: a factor with levels <code>88</code> and  <code>90</code></dd>
+<dt>age</dt><dd>the age of the patient subtracted from 55: a numeric vector</dd>
+<dt>y</dt><dd>the response variable a matrix with 2 columns, the first is noinap the second is equal to (los-noinap) </dd>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+Gange <EM>et al.</EM> (1996) used a logistic regression model for the number of inappropriate
+days (noinap) out of the total number of days spent in hospital (los), with binomial and beta binomial errors and found that the later
+provided a better fit to the data. They modelled both the mean and
+the dispersion of the beta binomial distribution (BB) as functions
+of explanatory variables
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Gange, S. J. Munoz, A.  Saez, M. and  Alonso, J. (1996) Use of the beta-binomial distribution to model
+the effect of policy changes on appropriateness of hospital stays. <EM>Appl. Statist</EM>, <B>45</B>, 371&ndash;382
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aep)
+attach(aep)
+pro&lt;-noinap/los
+plot(ward,pro)
+rm(pro)
+detach(aep)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.util</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

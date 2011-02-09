@@ -1,0 +1,86 @@
+<html><head><title>Mothers encouragement data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Mums(gamlss.util)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Mums">
+<param name="keyword" value=" Mothers encouragement data">
+</object>
+
+
+<h2>Mothers encouragement data</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Mothers encouragement for participation in Higher Education. The response variable is <code>mums</code> a three level factor 
+which can be used in a multinomial Logistic model or mumsB a two level factor suitable for binary logistic model.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(Mums)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+A data frame with 871 observations on the following 7 variables.
+<dl>
+<dt>mums</dt><dd>mothers encouragement: factor with levels <code>1</code> is for strong encouragement, 
+<code>2</code> is for some encouragement and 
+<code>3</code> for no encouragement/discouragement</dd> 
+<dt>class</dt><dd>social class: a factor with levels <code>1</code>is C1, <code>2</code> is C2, <code>3</code> is D and   <code>4</code> is E</dd>
+<dt>age</dt><dd>age of the participants: a factor with levels <code>1</code> is 16-18,  <code>2</code> is 19-20 and <code>3</code> is 20-30</dd>
+<dt>gender</dt><dd>a factor with levels <code>1</code> is male  and <code>2</code> is female</dd>
+<dt>ethn</dt><dd>ethnicity of the participants: a factor with levels <code>1</code> is white, <code>2</code> is black,  <code>3</code> is asian and  <code>4</code> is other</dd>
+<dt>qual</dt><dd>qualifications of the participants: a factor with levels, <code>1</code> is greater or equal to 2 A levels, 
+<code>2</code> is HND or more than 5 GCSE's,
+<code>3</code> is less than 5 GSCSE's ar none above and
+<code>4</code> no formal qualification</dd>
+<dt>mumsb</dt><dd>mothers encouragement: a factor with levels, <code>0</code> is no encouragement or some  encouragement <code>1</code> is for strong encouragement</dd>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+The data were collected as part of the Social Class and widening Participation in Higher Education Project based at the 
+University of North London (now London Metropolitan University) and supported by the 
+University's Development and Diversity Fund over the period 1998-2000.
+</p>
+
+
+<h3>Source</h3>
+
+<p>
+Professor Robert Gilchrist director of STORM at London Metropolitan
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Collier T., Gilchrist R. and Phillips D. (2003), Who Plans to Go to University? Statistical Modelling of 
+potential Working-Class Participants, Education Research and Evaluation, Vol 9, No 3, pp 239-263.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(Mums)
+MM&lt;-xtabs(~mums+qual, data=Mums)
+mosaicplot(MM, color=TRUE)
+MM&lt;-xtabs(~mums+ethn+gender, data=Mums)
+mosaicplot(MM, color=TRUE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.util</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

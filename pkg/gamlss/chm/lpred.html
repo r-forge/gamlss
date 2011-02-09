@@ -1,0 +1,116 @@
+<html><head><title>Extract Linear Predictor Values and Standard Errors For A GAMLSS Model</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>lpred(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   lpred">
+<param name="keyword" value="R:   lp">
+<param name="keyword" value=" Extract Linear Predictor Values and Standard Errors For A GAMLSS Model">
+</object>
+
+
+<h2>Extract Linear Predictor Values and Standard Errors For A GAMLSS Model</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>lpred</code> is the GAMLSS specific method which extracts the linear predictor and its (approximate) standard errors 
+for a specified parameter from a GAMLSS objects.  
+The <code>lpred</code> can be also used to extract the fitted values (with its approximate standard errors) or specific  terms in the model  
+(with its approximate standard errors) in the same way that the <code>predict.lm()</code> and <code>predict.glm()</code> functions can be used for 
+<code>lm</code> or <code>glm</code> objects. 
+The function <code>lp</code> extract only the linear predictor. If prediction is required for new data values then use the 
+function <code>predict.gamlss()</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+lpred(obj, what = c("mu", "sigma", "nu", "tau"), 
+           type = c("link", "response", "terms"), 
+           terms = NULL, se.fit = FALSE, ...)
+lp(obj, what = "mu", ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+a GAMLSS fitted model</td></tr>
+<tr valign="top"><td><code>what</code></td>
+<td>
+which distribution parameter is required, default <code>what="mu"</code> </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<code>type="link"</code> (the default) gets the linear predictor for the specified distribution parameter. 
+<code>type="response"</code> gets the fitted values for the parameter while <code>type="terms"</code> gets the fitted terms contribution</td></tr>
+<tr valign="top"><td><code>terms</code></td>
+<td>
+if <code>type="terms"</code>, which terms to be selected (default is all terms) </td></tr>
+<tr valign="top"><td><code>se.fit</code></td>
+<td>
+if TRUE the approximate standard errors of the appropriate type are extracted</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+If <code>se.fit=FALSE</code> a vector (or a matrix) of the appropriate <code>type</code> is extracted from the GAMLSS object for the given parameter in <code>what</code>.
+If <code>se.fit=TRUE</code> a list containing  the appropriate <code>type</code>, <code>fit</code>, and  its (approximate) standard errors, <code>se.fit</code>.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="predict.gamlss.html">predict.gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aids)
+mod&lt;-gamlss(y~poly(x,3)+qrt, family=PO, data=aids) # 
+mod.t &lt;- lpred(mod, type = "terms", terms= "qrt")
+mod.t
+mod.lp &lt;- lp(mod)
+mod.lp 
+rm(mod, mod.t,mod.lp)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

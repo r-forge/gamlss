@@ -1,0 +1,238 @@
+<html><head><title>Choose a model by GAIC in a Stepwise Algorithm</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>stepGAIC(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   stepGAIC">
+<param name="keyword" value="R:   stepGAIC.CH">
+<param name="keyword" value="R:   stepGAIC.VR">
+<param name="keyword" value=" Choose a model by GAIC in a Stepwise Algorithm">
+</object>
+
+
+<h2>Choose a model by GAIC in a Stepwise Algorithm</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The function <code>stepGAIC()</code> performs stepwise 
+model selection using a Generalized Akaike Information Criterion.
+The function <code>stepGAIC()</code> calls one of the two functions <code>stepGAIC.VR()</code> or <code>stepGAIC.CH()</code> depending on the argument 
+<code>additive</code>. 
+The function <code>stepGAIC.VR()</code> is based on the function <code>stepAIC()</code> given in the library MASS of Venables and Ripley (2002).
+The function  <code>stepGAIC.CH</code> is based on the S function <code>step.gam()</code> (see Chambers and Hastie (1991)) 
+and it is more suited for model with smoothing additive terms.  Both functions have been adapted to work with 
+gamlss objects.  The main difference for the user is the <code>scope</code> argument, see below. 
+If the <code>stepGAIC()</code> is called with the argument <code>additive=FALSE</code> then the  <code>stepGAIC.VR()</code> is called else the 
+<code>stepGAIC.CH()</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+
+stepGAIC.VR(object, scope, direction = c("both", "backward", "forward"), 
+         trace = T, keep = NULL, steps = 1000, scale = 0, 
+         what = c("mu", "sigma", "nu", "tau"), k = 2, ...)
+
+stepGAIC.CH(object, scope = gamlss.scope(model.frame(object)), 
+            direction = c("both", "backward", "forward"), trace = T, keep = NULL, 
+            steps = 1000, what = c("mu", "sigma", "nu", "tau"), k = 2, ...)
+
+stepGAIC(object, scope = gamlss.scope(model.frame(object)), 
+          direction = c("both", "backward", "forward"), 
+          trace = T, keep = NULL, steps = 1000, 
+          what = c("mu", "sigma", "nu", "tau"), k = 2, 
+          additive = FALSE, ...)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+an gamlss object. This
+is used as the initial model in the stepwise search. </td></tr>
+<tr valign="top"><td><code>scope</code></td>
+<td>
+defines the range of models examined in the stepwise search.
+For the function   <code>stepAIC()</code> this should be either a single formula, 
+or a list containing  components <code>upper</code> and <code>lower</code>, both formulae.  
+See the details for how to specify the formulae and how they are
+used.
+For the function <code>stepGAIC</code> the scope defines the range of models examined in the step-wise search.
+It is a list of formulas, with each formula corresponding to a term in the model. 
+A 1 in the formula allows the additional option of leaving the term out of the model entirely. +          
+</td></tr>
+<tr valign="top"><td><code>direction</code></td>
+<td>
+the mode of stepwise search, can be one of <code>both</code>,
+<code>backward</code>, or <code>forward</code>, with a default of <code>both</code>. If
+the <code>scope</code> argument is missing the default for <code>direction</code>
+is <code>backward</code></td></tr>
+<tr valign="top"><td><code>trace</code></td>
+<td>
+if positive, information is printed during the running of
+<code>stepAIC</code>. Larger values may give more information on the
+fitting process.</td></tr>
+<tr valign="top"><td><code>keep</code></td>
+<td>
+a filter function whose input is a fitted model object and
+the associated 'AIC' statistic, and whose output is
+arbitrary. Typically 'keep' will select a subset of the
+components of the object and return them. The default is not
+to keep anything.</td></tr>
+<tr valign="top"><td><code>steps</code></td>
+<td>
+the maximum number of steps to be considered.  The default is
+1000 (essentially as many as required).  It is typically used
+to stop the process early. </td></tr>
+<tr valign="top"><td><code>scale</code></td>
+<td>
+scale is nor used in gamlss</td></tr>
+<tr valign="top"><td><code>what</code></td>
+<td>
+which distribution parameter is required, default <code>what="mu"</code> </td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+the multiple of the number of degrees of freedom used for the
+penalty. Only 'k = 2' gives the genuine AIC: 'k = log(n)' is
+sometimes referred to as BIC or SBC.</td></tr>
+<tr valign="top"><td><code>additive</code></td>
+<td>
+if <code>additive=TRUE</code> then <code>stepGAIC.CH</code> is used else <code>stepGAIC.CH</code>, default value is FALSE</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+any additional arguments to 'extractAIC'. (None are currently
+used.)  </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The set of models searched is determined by the <code>scope</code> argument.
+</p>
+<p>
+For the function <code>stepGAIC.VR()</code> the right-hand-side of its <code>lower</code> 
+component is always included in  the model, and right-hand-side of the model is included in the <code>upper</code> 
+component.  If <code>scope</code> is a single formula, it specifies  the <code>upper</code> component,
+and the <code>lower</code> model is empty.  If <code>scope</code> is missing, the initial model 
+is used as the <code>upper</code> model.
+</p>
+<p>
+Models specified by <code>scope</code> can be templates to update <code>object</code> as
+used by <code>update.formula</code>.
+</p>
+<p>
+For the function <code>stepGAIC.CH()</code> each of the formulas in scope specifies a 
+"regimen" of candidate forms in which the particular term may enter the model. 
+For example, a term formula might be 
+</p>
+<p>
+~ x1 + log(x1) + cs(x1, df=3)
+</p>
+<p>
+This means that x1 could either appear linearly, linearly in its logarithm, or as a smooth function estimated non-parametrically.
+Every term in the model is described by such a term formula, and the final model is built up by selecting a component from each formula. 
+</p>
+<p>
+The function <code>gamlss.scope</code> similar to the S <code>gam.scope()</code> in Chambers and Hastie (1991) can be used to create automatically
+term formulae from specified data or model frames.
+</p>
+<p>
+The supplied model object is used as the starting model, and hence there is the requirement 
+that one term from each of the term formulas of the parameters be present in the formula of the distribution parameter. 
+This also implies that any terms in formula of the distribution parameter not contained in any of the term formulas 
+will be forced to be present in every model considered.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+the stepwise-selected model is returned, with up to two additional
+components.  There is an '"anova"' component corresponding to the
+steps taken in the search, as well as a '"keep"' component if the
+'keep=' argument was supplied in the call. The '"Resid. Dev"'
+column of the analysis of deviance table refers to a constant
+minus twice the maximized log likelihood</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos based on functions in MASS library and in Statistical Models in S
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Chambers, J. M. and Hastie, T. J. (1991). <EM>Statistical Models in S</EM>, Chapman and Hall, London. 
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+<p>
+Venables, W. N. and Ripley, B. D. (2002) <EM>Modern Applied
+Statistics with S</EM>. Fourth edition.  Springer.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.scope.html">gamlss.scope</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(usair)
+# Note default of additive=FALSE
+# fitting all variables linearly 
+mod1&lt;-gamlss(y~., data=usair, family=GA)
+# find the best subset for the mu
+mod2&lt;-stepGAIC(mod1)
+mod2$anova
+# find the best subset for sigma
+mod3&lt;-stepGAIC(mod2, what="sigma", scope=~x1+x2+x3+x4+x5+x6)
+mod3$anova
+# now use the stepGAIC.CH function
+# creating a scope from the usair model frame 
+gs&lt;-gamlss.scope(model.frame(y~x1+x2+x3+x4+x5+x6, data=usair))
+gs 
+mod4&lt;-gamlss(y~1, data=usair, family=GA)
+mod5&lt;-stepGAIC(mod4,gs, additive=TRUE)
+mod5$anova
+mod6&lt;-stepGAIC(mod5, what="sigma", scope=~x1+x2+x3+x4+x5+x6)
+mod6$anova
+mod6
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

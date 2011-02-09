@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.data:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.data:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="abdom">
+<param name="Local" value="abdom.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="aep">
+<param name="Local" value="aep.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="aids">
+<param name="Local" value="aids.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="alveolar">
+<param name="Local" value="alveolar.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CD4">
+<param name="Local" value="CD4.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="computer">
+<param name="Local" value="computer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="db">
+<param name="Local" value="bd.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fabric">
+<param name="Local" value="fabric.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="glass">
+<param name="Local" value="glass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hodges">
+<param name="Local" value="hodges.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hodges1">
+<param name="Local" value="hodges.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="LGAclaims">
+<param name="Local" value="LGAclaims.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lice">
+<param name="Local" value="lice.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="margolin">
+<param name="Local" value="margolin.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Mums">
+<param name="Local" value="Mums.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="parzen">
+<param name="Local" value="parzen.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rent">
+<param name="Local" value="rent.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="species">
+<param name="Local" value="species.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="stylo">
+<param name="Local" value="stylo.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="tensile">
+<param name="Local" value="tensile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="usair">
+<param name="Local" value="usair.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.data:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Abdominal Circumference Data">
+<param name="Local" value="abdom.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Aids Cases in England and Wales">
+<param name="Local" value="aids.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Data files for GAMLSS">
+<param name="Local" value="lice.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Head Circumference of Dutch Boys">
+<param name="Local" value="bd.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Hodges data">
+<param name="Local" value="hodges.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Mothers encouragement data">
+<param name="Local" value="Mums.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Rent data">
+<param name="Local" value="rent.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Alveolar Data files for GAMLSS">
+<param name="Local" value="alveolar.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The CD4 Count Data files for GAMLSS">
+<param name="Local" value="CD4.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Computer Failure Data files for GAMLSS">
+<param name="Local" value="computer.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Fabric Data">
+<param name="Local" value="fabric.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Fish Species Data files for GAMLSS">
+<param name="Local" value="species.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Glass Data files for GAMLSS">
+<param name="Local" value="glass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Hospital Stay Data">
+<param name="Local" value="aep.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The LGA Claims Data files for GAMLSS">
+<param name="Local" value="LGAclaims.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Margolin Data files for GAMLSS">
+<param name="Local" value="margolin.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Parzen Data File for GAMLSS">
+<param name="Local" value="parzen.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Stylometric Data files for GAMLSS">
+<param name="Local" value="stylo.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The Tensile Data files for GAMLSS">
+<param name="Local" value="tensile.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="US air pollution data set">
+<param name="Local" value="usair.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>
