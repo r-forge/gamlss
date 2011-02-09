@@ -1,0 +1,571 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss-package">
+<param name="Local" value="gamlss.package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="additive.fit">
+<param name="Local" value="additive.fit.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AIC.gamlss">
+<param name="Local" value="IC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bfp">
+<param name="Local" value="bfp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="centiles">
+<param name="Local" value="centiles.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="centiles.com">
+<param name="Local" value="centiles.com.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="centiles.pred">
+<param name="Local" value="centiles.pred.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="centiles.split">
+<param name="Local" value="centiles.split.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="coef.gamlss">
+<param name="Local" value="coef.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cs">
+<param name="Local" value="cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cy">
+<param name="Local" value="ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cy.control">
+<param name="Local" value="ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="deviance.gamlss">
+<param name="Local" value="deviance.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="extractAIC.gamlss">
+<param name="Local" value="IC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="find.hyper">
+<param name="Local" value="findhyper.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fitted.gamlss">
+<param name="Local" value="fitted.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fitted.plot">
+<param name="Local" value="fitted.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="formula.gamlss">
+<param name="Local" value="formula.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fp">
+<param name="Local" value="bfp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fv">
+<param name="Local" value="fitted.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GAIC">
+<param name="Local" value="IC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss">
+<param name="Local" value="gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.control">
+<param name="Local" value="gamlss.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.cs">
+<param name="Local" value="gamlss.cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.cy">
+<param name="Local" value="gamlss.ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.fp">
+<param name="Local" value="gamlss.fp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.lo">
+<param name="Local" value="gamlss.lo.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.pb">
+<param name="Local" value="gamlss.ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.pp">
+<param name="Local" value="gamlss.fp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.ps">
+<param name="Local" value="gamlss.ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.ra">
+<param name="Local" value="gamlss.ra.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.random">
+<param name="Local" value="gamlss.random.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.rc">
+<param name="Local" value="gamlss.rc.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.ri">
+<param name="Local" value="gamlss.ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.ridge">
+<param name="Local" value="gamlss.ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.scope">
+<param name="Local" value="gamlss.scope.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.scs">
+<param name="Local" value="gamlss.cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.vc">
+<param name="Local" value="gamlss.cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlssNews">
+<param name="Local" value="gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="glim.control">
+<param name="Local" value="glim.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="histDist">
+<param name="Local" value="histDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IC">
+<param name="Local" value="IC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="is.gamlss">
+<param name="Local" value="gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lo">
+<param name="Local" value="lo.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lp">
+<param name="Local" value="lpred.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lpred">
+<param name="Local" value="lpred.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="model.frame.gamlss">
+<param name="Local" value="model.frame.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="model.matrix.gamlss">
+<param name="Local" value="model.frame.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="par.plot">
+<param name="Local" value="par.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pb">
+<param name="Local" value="ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pb.control">
+<param name="Local" value="ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pdf.plot">
+<param name="Local" value="pdf.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot.gamlss">
+<param name="Local" value="plot.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="poly.matrix">
+<param name="Local" value="polyS.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="polyS">
+<param name="Local" value="polyS.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pp">
+<param name="Local" value="bfp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="predict.gamlss">
+<param name="Local" value="predict.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="predictAll">
+<param name="Local" value="predict.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print.gamlss">
+<param name="Local" value="print.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="prof.dev">
+<param name="Local" value="prof.dev.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="prof.term">
+<param name="Local" value="prof.term.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ps">
+<param name="Local" value="ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Q.stats">
+<param name="Local" value="Q.stats.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ra">
+<param name="Local" value="ra.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="random">
+<param name="Local" value="random.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rc">
+<param name="Local" value="rc.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="refit">
+<param name="Local" value="refit.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="residuals.gamlss">
+<param name="Local" value="residuals.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ri">
+<param name="Local" value="ridge.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ridge">
+<param name="Local" value="ridge.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rqres.plot">
+<param name="Local" value="rqres.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scs">
+<param name="Local" value="cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="stepGAIC">
+<param name="Local" value="stepGAIC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="stepGAIC.CH">
+<param name="Local" value="stepGAIC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="stepGAIC.VR">
+<param name="Local" value="stepGAIC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="summary.gamlss">
+<param name="Local" value="summary.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="term.plot">
+<param name="Local" value="term.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="terms.gamlss">
+<param name="Local" value="model.frame.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TGD">
+<param name="Local" value="VGD.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="update.gamlss">
+<param name="Local" value="update.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vc">
+<param name="Local" value="cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="VGD">
+<param name="Local" value="VGD.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="VGD1">
+<param name="Local" value="VGD.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="VGD2">
+<param name="Local" value="VGD.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="wp">
+<param name="Local" value="wp.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="A function to calculate the Q-statistics">
+<param name="Local" value="Q.stats.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="A function to plot parallel plot for repeated measurement data">
+<param name="Local" value="par.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="A function to select values of hyperparameters in a GAMLSS model">
+<param name="Local" value="findhyper.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Auxiliary for Controlling GAMLSS Fitting">
+<param name="Local" value="gamlss.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Auxiliary for Controlling the inner algorithm in a GAMLSS Fitting">
+<param name="Local" value="glim.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Auxiliary support for the GAMLSS">
+<param name="Local" value="polyS.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Choose a model by GAIC in a Stepwise Algorithm">
+<param name="Local" value="stepGAIC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Comparing centiles from different GAMLSS models">
+<param name="Local" value="centiles.com.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Creating predictive centiles values">
+<param name="Local" value="centiles.pred.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Extract a model.frame, a model matrix or terms from a GAMLSS object for a given distributional parameter">
+<param name="Local" value="model.frame.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Extract Fitted Values For A GAMLSS Model">
+<param name="Local" value="fitted.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Extract Linear Predictor Values and Standard Errors For A GAMLSS Model">
+<param name="Local" value="lpred.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Extract Model Coefficients in a GAMLSS fitted model">
+<param name="Local" value="coef.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Extract Predictor Values and Standard Errors For New Data In a GAMLSS Model">
+<param name="Local" value="predict.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Extract Residuals from GAMLSS model">
+<param name="Local" value="residuals.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Extract the Model Formula in a GAMLSS fitted model">
+<param name="Local" value="formula.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Functions to fit fractional polynomials in GAMLSS">
+<param name="Local" value="bfp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generalized Additive Models for Location Scale and Shape">
+<param name="Local" value="gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generate a Scope Argument for Stepwise GAMLSS">
+<param name="Local" value="gamlss.scope.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Gives the GAIC for a GAMLSS Object">
+<param name="Local" value="IC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Global Deviance of a GAMLSS model">
+<param name="Local" value="deviance.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Implementing Backfitting in GAMLSS">
+<param name="Local" value="additive.fit.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot regression terms for a specified parameter of a GAMLSS object">
+<param name="Local" value="term.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot Residual Diagnostics for an GAMLSS Object">
+<param name="Local" value="plot.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plots centile curves split by x for a GAMLSS object">
+<param name="Local" value="centiles.split.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plots Probability Distribution Functions for GAMLSS Family">
+<param name="Local" value="pdf.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plots the centile curves for a GAMLSS object">
+<param name="Local" value="centiles.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plots The Fitted Values of a GAMLSS Model">
+<param name="Local" value="fitted.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plotting Randomized Quantile Residuals">
+<param name="Local" value="rqres.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plotting the Profile Deviance for one of the Parameters in a GAMLSS model">
+<param name="Local" value="prof.dev.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plotting the Profile: deviance or information criterion for one of the terms (or hyper-parameters) in a GAMLSS model">
+<param name="Local" value="prof.term.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Prints a GAMLSS fitted model">
+<param name="Local" value="print.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Refit a GAMLSS model">
+<param name="Local" value="refit.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specify a loess fit in a GAMLSS formula">
+<param name="Local" value="lo.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specify a Penalised Beta (Regression) Spline Fit in a GAMLSS Formula">
+<param name="Local" value="ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specify a simple random effect in a GAMLSS Formula">
+<param name="Local" value="random.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specify a Smoothing Cubic Spline Fit in a GAMLSS Formula">
+<param name="Local" value="cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specify Random Coefficients In A GAMLSS Formula">
+<param name="Local" value="rc.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specify Ridge regression In A GAMLSS Formula">
+<param name="Local" value="ridge.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specify Simple Random Effect In A GAMLSS Formula">
+<param name="Local" value="ra.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Summarizes a GAMLSS fitted model">
+<param name="Local" value="summary.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Support for Function cs(), s() and vc()">
+<param name="Local" value="gamlss.cs.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Support for Function fp()">
+<param name="Local" value="gamlss.fp.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Support for Function lo()">
+<param name="Local" value="gamlss.lo.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Support for Function ra()">
+<param name="Local" value="gamlss.ra.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Support for Function random()">
+<param name="Local" value="gamlss.random.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Support for Function rc()">
+<param name="Local" value="gamlss.rc.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Support for Functions ps(), pb(), cy() and ri()">
+<param name="Local" value="gamlss.ps.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The GAMLSS library and datasets">
+<param name="Local" value="gamlss.package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="This function plots the histogram and a fitted (GAMLSS family) distribution to a variable">
+<param name="Local" value="histDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Update and Re-fit a GAMLSS Model">
+<param name="Local" value="update.gamlss.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Validation (or test) data global deviance">
+<param name="Local" value="VGD.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Worm plot">
+<param name="Local" value="wp.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

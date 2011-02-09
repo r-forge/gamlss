@@ -1,0 +1,142 @@
+<html><head><title>Auxiliary for Controlling GAMLSS Fitting</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>gamlss.control(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   gamlss.control">
+<param name="keyword" value=" Auxiliary for Controlling GAMLSS Fitting">
+</object>
+
+
+<h2>Auxiliary for Controlling GAMLSS Fitting</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Auxiliary function as user interface for <code>gamlss</code> fitting. Typically
+only used when calling <code>gamlss</code> function with the option <code>control</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gamlss.control(c.crit = 0.001, n.cyc = 20, mu.step = 1, sigma.step = 1, nu.step = 1, 
+               tau.step = 1, gd.tol = 5, iter = 0, trace = TRUE, autostep = TRUE, 
+               save = TRUE, ...)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>c.crit</code></td>
+<td>
+the convergence criterion for the algorithm</td></tr>
+<tr valign="top"><td><code>n.cyc</code></td>
+<td>
+the number of cycles of the algorithm</td></tr>
+<tr valign="top"><td><code>mu.step</code></td>
+<td>
+the step length for the parameter <code>mu</code></td></tr>
+<tr valign="top"><td><code>sigma.step</code></td>
+<td>
+the step length for the parameter <code>sigma</code> </td></tr>
+<tr valign="top"><td><code>nu.step</code></td>
+<td>
+the step length for the parameter <code>nu</code> </td></tr>
+<tr valign="top"><td><code>tau.step</code></td>
+<td>
+the step length for the parameter <code>tau</code> </td></tr>
+<tr valign="top"><td><code>gd.tol</code></td>
+<td>
+global deviance tolerance level</td></tr>
+<tr valign="top"><td><code>iter</code></td>
+<td>
+starting value for the number of iterations, typically set to 0 unless the function <code><a href="refit.html">refit</a></code> is used</td></tr>
+<tr valign="top"><td><code>trace</code></td>
+<td>
+whether to print at each iteration (TRUE) or not (FALSE) </td></tr>
+<tr valign="top"><td><code>autostep</code></td>
+<td>
+whether the steps should be halved automatically if the new global deviance is greater that the old one, 
+the default is <code>autostep=TRUE</code>  </td></tr>
+<tr valign="top"><td><code>save</code></td>
+<td>
+<code>save=TRUE</code>, (the default), saves all the information on exit. 
+<code>save=FALSE</code> saves only limited information as the global deviance and AIC. 
+For example fitted values, design matrices and additive terms are not saved.
+The latest is useful when gamlss() is called several times within a procedure. </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The step length for each of the parameters <code>mu</code>, <code>sigma</code>, <code>nu</code> or <code>tau</code> is very useful to aid convergence 
+if the parameter has a fully parametric model.
+However using a step length  is not theoretically justified if the model for the parameter includes one or more smoothing terms, 
+(even thought it may give a very approximate result). 
+</p>
+<p>
+The <code>c.crit</code> can be increased to speed up the convergence especially for a large set of data which takes longer to fit.   
+When `trace' is TRUE, calls to the function <code>cat</code> produce the output for each outer iteration.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list with the arguments as components.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aids)
+h&lt;-gamlss(y~poly(x,3)+qrt, family=PO, data=aids) # 
+con&lt;-gamlss.control(mu.step=0.1)
+h&lt;-gamlss(y~poly(x,3)+qrt, family=PO, data=aids, control=con) # 
+rm(h,con)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.9-9 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

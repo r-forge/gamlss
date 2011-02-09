@@ -1,0 +1,126 @@
+<html><head><title>Plot Residual Diagnostics for an GAMLSS Object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>plot.gamlss(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   plot.gamlss">
+<param name="keyword" value=" Plot Residual Diagnostics for an GAMLSS Object">
+</object>
+
+
+<h2>Plot Residual Diagnostics for an GAMLSS Object</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function provides four plots for checking the normalized (randomized for a discrete response distribution) quantile 
+residuals of a fitted GAMLSS object, referred to as residuals below : a plot of residuals against fitted values, a plot of the residuals against 
+an index or a specific explanatory variable,  a density plot of the residuals and a normal Q-Q plot of the residuals.
+If argument <code>ts=TRUE</code> then the first two plots are replaced by the autocorrelation function (ACF) and partial autocorrelation function (PACF)
+of the residuals
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'gamlss':
+plot(x, xvar = NULL, parameters = NULL, ts = FALSE, 
+           summaries = TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+a GAMLSS fitted object </td></tr>
+<tr valign="top"><td><code>xvar</code></td>
+<td>
+an explanatory variable to plot the residuals against</td></tr>
+<tr valign="top"><td><code>parameters</code></td>
+<td>
+plotting parameters can be specified here</td></tr>
+<tr valign="top"><td><code>ts</code></td>
+<td>
+set this to TRUE if ACF and PACF plots of the residuals are required </td></tr>
+<tr valign="top"><td><code>summaries</code></td>
+<td>
+set this to FALSE if no summary statistics of the residuals are required</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function provides four plots for checking the normalized (randomized) quantile residuals (called <code>residuals</code>) of a fitted GAMLSS object. 
+Randomization is only performed for discrete response variables.  The four plots are 
+</p>
+
+<ul> 
+<li>residuals against the fitted values (or ACF of the residuals if <code>ts=TRUE</code>)
+<li>residuals against an index or specified x-variable (or PACF of the residuals if <code>ts=TRUE</code>)
+<li>kernel density estimate of the residuals 
+<li>QQ-normal plot of the residuals 
+</ul>
+<p>
+For time series response variables option <code>ts=TRUE</code> can be used to plot the ACF and PACF functions of the residuals.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Returns four plots related to the residuals of the fitted GAMLSS model and prints summary statistics for the residuals if the <code>summary=T</code></p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a> and Kalliope Akantziliotou
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(aids)
+a&lt;-gamlss(y~cs(x,df=7)+qrt,family=PO,data=aids)
+plot(a)
+rm(a)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

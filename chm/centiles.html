@@ -1,0 +1,181 @@
+<html><head><title>Plots the centile curves for a GAMLSS object</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>centiles(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   centiles">
+<param name="keyword" value=" Plots the centile curves for a GAMLSS object">
+</object>
+
+
+<h2>Plots the centile curves for a GAMLSS object</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function plots centiles curves for distributions belonging to the GAMLSS family of distributions.  
+The function also tabulates the sample percentages below each centile curve (for comparison with the model percentages given by the argument <code>cent</code>.)
+A restriction of the function is that it applies to models with one explanatory variable only.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+centiles(obj, xvar = NULL, cent = c(0.4, 2, 10, 25, 50, 75, 90, 98, 99.6), 
+         legend = TRUE, ylab = "y", xlab = "x", main = NULL, 
+         main.gsub = "@", xleg = min(xvar), yleg = max(obj$y), 
+         xlim = range(xvar), ylim = range(obj$y), save = FALSE, 
+         plot = TRUE, pch = "+", col = "blue", 
+         col.centiles = 1:length(cent) + 2, lty.centiles = 1, lwd.centiles = 1, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+a fitted gamlss object from fitting a gamlss distribution</td></tr>
+<tr valign="top"><td><code>xvar</code></td>
+<td>
+the unique explanatory variable</td></tr>
+<tr valign="top"><td><code>cent</code></td>
+<td>
+a vector with elements the % centile values for which the centile curves have to be evaluated</td></tr>
+<tr valign="top"><td><code>legend</code></td>
+<td>
+whether a legend is required in the plot or not, the default is <code>legent=TRUE</code>  </td></tr>
+<tr valign="top"><td><code>ylab</code></td>
+<td>
+the y-variable label</td></tr>
+<tr valign="top"><td><code>xlab</code></td>
+<td>
+the x-variable label</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+the main title here as character. 
+If NULL the default title "centile curves using  NO" (or the relevant distributions name) is shown</td></tr>
+<tr valign="top"><td><code>main.gsub</code></td>
+<td>
+if the <code>main.gsub</code> (with default "@") appears in the <code>main</code> 
+title then it is substituted with the default title.</td></tr>
+<tr valign="top"><td><code>xleg</code></td>
+<td>
+position of the legend in the x-axis</td></tr>
+<tr valign="top"><td><code>yleg</code></td>
+<td>
+position of the legend in the y-axis</td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+the limits of the x-axis</td></tr>
+<tr valign="top"><td><code>ylim</code></td>
+<td>
+the limits of the y-axis</td></tr>
+<tr valign="top"><td><code>save</code></td>
+<td>
+whether to save the sample percentages or not with default equal to <code>FALSE</code>. 
+In this case the sample percentages are printed but are not saved </td></tr>
+<tr valign="top"><td><code>plot</code></td>
+<td>
+whether to plot the centiles. This option is useful for <code>centile.split</code> </td></tr>
+<tr valign="top"><td><code>pch</code></td>
+<td>
+the character to be used as the default in plotting points see <code>par</code></td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+plotting colour see <code>par</code></td></tr>
+<tr valign="top"><td><code>col.centiles</code></td>
+<td>
+Plotting colours  for the centile curves</td></tr>
+<tr valign="top"><td><code>lty.centiles</code></td>
+<td>
+line type for the centile curves</td></tr>
+<tr valign="top"><td><code>lwd.centiles</code></td>
+<td>
+The line width for the centile curves</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Centiles are calculated using the fitted values in <code>obj</code> and <code>xvar</code> must
+correspond exactly to the predictor in <code>obj</code> to plot correctly.
+</p>
+<p>
+<code>col.centiles</code>, <code>lty.centiles</code> and <code>lwd.centiles</code> may be vector arguments
+and are recycled to the length <code>cent</code> if necessary.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A centile plot is produced and the sample centiles below each centile curve are printed (or saved)</p>
+
+<h3>Warning</h3>
+
+<p>
+This function is appropriate only when one continuous explanatory variable is fitted in the model
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a> with contribution from Steve Ellison
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>, <code><a href="centiles.split.html">centiles.split</a></code> , <code><a href="centiles.com.html">centiles.com</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(abdom)
+h&lt;-gamlss(y~cs(x,df=3), sigma.formula=~cs(x,1), family=BCT, data=abdom) 
+# default plot
+centiles(h,xvar=abdom$x)
+# control of colours and lines
+centiles(h, xvar=abdom$x,  col.cent=c(2,3,4,5,1,5,4,3,2,1), 
+              lwd.cent=c(1,1,1,1,2,1,1,1,1))
+#Control line types
+centiles(h, xvar=abdom$x,  col.cent=1, cent=c(.5,2.5,50,97.5,99.5), 
+              lty.centiles=c(3,2,1,2,3),lwd.cent=c(1,1,2,1,1))
+# control of the main title
+centiles(h, xvar=abdom$x,  main="Abdominal data \n @")
+rm(h)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.9-9 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

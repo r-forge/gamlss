@@ -1,0 +1,137 @@
+<html><head><title>Specify a loess fit in a GAMLSS formula</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>lo(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   lo">
+<param name="keyword" value=" Specify a loess fit in a GAMLSS formula">
+</object>
+
+
+<h2>Specify a loess fit in a GAMLSS formula</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Allows the user to specify a loess fit in a GAMLSS formula. This function is similar to the <code>lo</code> function in the <code>gam</code> implementation of S-plus
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+lo(..., span = 0.5, df = NULL, degree = 1)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+the unspecified ...  can be a comma-separated list of numeric vectors, numeric matrix, 
+or expressions that evaluate to either of these. If it is a list of vectors, they must all have the same length.
+</td></tr>
+<tr valign="top"><td><code>span</code></td>
+<td>
+the number of observations in a neighborhood. This is the smoothing parameter for a loess fit.
+</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+the effective degrees of freedom can be specified instead of span, e.g. <code>df=5</code>  </td></tr>
+<tr valign="top"><td><code>degree</code></td>
+<td>
+the degree of local polynomial to be fit; can be 1 or 2. </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Note that <code>lo</code> itself does no smoothing; it simply sets things up for the function <code>gamlss.lo()</code> which is used by the backfitting
+function  <code>gamlss.add()</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+a numeric matrix is returned.  The simplest case is when there is a single argument to lo and degree=1; 
+a one-column matrix is returned, consisting of a normalized version of the vector.  
+If degree=2 in this case, a two-column matrix is returned, consisting of a 2d-degree orthogonal-polynomial basis.  
+Similarly, if there are two arguments, or the single argument is a two-column matrix, either a two-column matrix is returned if degree=1, 
+or a five-column matrix consisting of powers and products up to degree 2.  
+Any dimensional argument is allowed, but typically one or two vectors are used in practice. 
+The matrix is endowed with a number of attributes; the matrix itself is used in the construction of the model matrix, 
+while the attributes are needed for the backfitting algorithms all.wam or lo.wam (weighted additive model). 
+Local-linear curve or surface fits reproduce linear responses, while local-quadratic fits reproduce quadratic curves or surfaces.
+These parts of the loess fit are computed exactly together with the other parametric linear parts of the model.</p>
+
+<h3>Warning</h3>
+
+<p>
+For user wanted to compare the <code>gamlss()</code> results with the equivalent <code>gam()</code> 
+results in S-plus: make sure that the convergence criteria epsilon and bf.epsilon in S-plus are decreased sufficiently to ensure proper convergence in S-plus
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+Note that <code>lo</code> itself does no smoothing; it simply sets things up for <code>gamlss.lo()</code> to do the backfitting.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>, based on the Trevor Hastie S-plus <code>lo</code> function
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Chambers, J. M. and Hastie, T. J. (1991). <EM>Statistical Models in S</EM>, Chapman and Hall, London. 
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="cs.html">cs</a></code>, <code><a href="random.html">random</a></code>,
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aids)
+attach(aids)
+# fitting a loess curve with span=0.4 plus the a quarterly  effect 
+aids1&lt;-gamlss(y~lo(x,span=0.4)+qrt,data=aids,family=PO) # 
+plot(x,y)
+lines(x,fitted(aids1))
+rm(aids1)
+detach(aids)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

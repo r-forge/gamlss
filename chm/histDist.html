@@ -1,0 +1,154 @@
+<html><head><title>This function plots the histogram and a fitted (GAMLSS family) distribution to a variable</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>histDist(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   histDist">
+<param name="keyword" value=" This function plots the histogram and a fitted (GAMLSS family) distribution to a variable">
+</object>
+
+
+<h2>This function plots the histogram and a fitted (GAMLSS family) distribution to a variable</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function fits constants to the parameters of a GAMLSS family distribution and them plot the histogram and 
+the fitted distribution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+histDist(y, family = NO, freq = NULL, 
+        density = FALSE, nbins = 10, xlim = NULL, 
+        ylim = NULL, main = NULL, xlab = NULL, 
+        ylab = NULL, ...)
+        </pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+a vector for the response variable</td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+a <code>gamlss.family</code> distribution</td></tr>
+<tr valign="top"><td><code>freq</code></td>
+<td>
+the frequencies of the data in <code>y</code> if exist. <code>freq</code> is used as <code>weights</code> in the <code>gamlss</code> fit</td></tr>
+<tr valign="top"><td><code>density</code></td>
+<td>
+default value is FALSE. Change to TRUE if you would like a non-parametric density plot together with the parametric 
+fitted distribution plot (for continuous variable only)</td></tr>
+<tr valign="top"><td><code>nbins</code></td>
+<td>
+The suggested number of bins (argument passed to <code>truehist()</code> of package MASS). 
+Either a positive integer, or a character string naming a rule: "Scott" 
+or "Freedman-Diaconis" or "FD". (Case is ignored.) </td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+the minimum and the maximum x-axis value (if the default values are out of range)</td></tr>
+<tr valign="top"><td><code>ylim</code></td>
+<td>
+the minimum and the maximum y-axis value (if the default values are out of range)</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+the main title for the plot</td></tr>
+<tr valign="top"><td><code>xlab</code></td>
+<td>
+the label in the x-axis</td></tr>
+<tr valign="top"><td><code>ylab</code></td>
+<td>
+the label in the y-axis</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments to be passed to the <code>gamlss</code> function</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function first fits constants for each parameters of a GAMLSS distribution family using the <code>gamlss</code> function  
+and them plots the fitted distribution together with the appropriate plot according to whether 
+the <code>y</code> variable is of a continuous or discrete type. Histogram is plotted for continuous and barplot for discrete variables. 
+The function <code>truehist</code> of 
+Venables and Ripley's MASS package is used for the histogram plotting.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+returns a plot</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).  
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>, <code><a onclick="findlink('gamlss.dist', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(abdom)
+attach(abdom)
+histDist(y,family="NO")
+# use the ymax argument of the of the truehist()
+histDist(y,family="NO",ymax=0.005)
+# bad fit use PE
+histDist(y,family="PE",ymax=0.005)
+detach(abdom)
+# discere data counts 
+#  Hand at al. p150  Leptinotarsa decemlineata
+y &lt;- c(0,1,2,3,4,6,7,8,10,11)
+freq &lt;- c(33,12,5,6,5,2,2,2,1,2) 
+histDist(y, "NBI", freq=freq)
+# the same as 
+histDist(rep(y,freq), "NBI")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 3.0-0 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

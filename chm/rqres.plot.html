@@ -1,0 +1,132 @@
+<html><head><title>Plotting Randomized Quantile Residuals</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>rqres.plot(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   rqres.plot">
+<param name="keyword" value=" Plotting Randomized Quantile Residuals">
+</object>
+
+
+<h2>Plotting Randomized Quantile Residuals</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function plots QQ-plots of the normalized randomized quantile residuals (see Dunn and Smyth, 1996) for a model using a discrete GAMLSS family distribution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rqres.plot(obj = NULL, howmany = 6, all = TRUE, save = FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>obj</code></td>
+<td>
+a fitted GAMLSS model object from a "discrete" type of family </td></tr>
+<tr valign="top"><td><code>howmany</code></td>
+<td>
+The number of QQ-plots required up to ten i.e. <code>howmany=6</code></td></tr>
+<tr valign="top"><td><code>all</code></td>
+<td>
+if TRUE QQ-plots from <code>howmany</code> realizations are plotted. 
+If FALSE then a single qq-plot of the median of the <code>howmany</code> realizations is plotted</td></tr>
+<tr valign="top"><td><code>save</code></td>
+<td>
+If TRUE the median residuals can be saved </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+For discrete family distributions, the <code><a href="gamlss.html">gamlss</a>()</code> function saves on exit one realization of randomized quantile residuals which 
+can be plotted using the generic function <code>plot</code> which calls the <code>plot.gamlss</code>. Looking at only one realization can be misleading, so the 
+current function creates QQ-plots for several 
+realizations. The function allows up to 10 QQ-plots to be plotted. Occasionally  one wishes to create a lot of realizations 
+and then take a median of them (separately for each ordered value) to create a single median realization. The option <code>all</code> in combinations 
+with the option <code>howmany</code> creates a 
+QQ-plot of the medians of the normalized randomized quantile residuals. These 'median' randomized quantile residuals can be saved using the option
+(<code>save=TRUE</code>).
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+If <code>save</code> it is TRUE then the vector of the median residuals is saved.</p>
+
+<h3>Warning</h3>
+
+<p>
+....
+</p>
+
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Dunn, P. K. and Smyth, G. K. (1996) Randomised quantile residuals,
+<EM>J. Comput. Graph. Statist.</EM>, <B>5</B>, 236&ndash;244
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="plot.gamlss.html">plot.gamlss</a></code>, <code><a href="gamlss.html">gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aids) # fitting a model from a discrete distribution 
+h&lt;-gamlss(y~cs(x,df=7)+qrt, family=NBI, data=aids) # 
+plot(h)
+# plot qq- plots from 6 realization of the randomized quantile residuals
+rqres.plot(h) 
+# a qq-plot from the medians from 40 realizations
+rqres.plot(h,howmany=40,all=FALSE) # 
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,118 @@
+<html><head><title>Extract a model.frame, a model matrix or terms from a GAMLSS object for a given distributional parameter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>model.frame.gamlss(gamlss)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   model.frame.gamlss">
+<param name="keyword" value="R:   terms.gamlss">
+<param name="keyword" value="R:   model.matrix.gamlss">
+<param name="keyword" value=" Extract a model.frame a model matrix or terms from a GAMLSS object for a given distributional parameter">
+</object>
+
+
+<h2>Extract a model.frame a model matrix or terms from a GAMLSS object for a given distributional parameter</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>model.frame.gamlss</code>, <code>model.matrix.gamlss</code> and <code>terms.gamlss</code> are the gamlss versions of the  generic functions
+<code>model.frame</code>, <code>model.matrix</code> and <code>terms</code> respectively.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'gamlss':
+model.frame(formula, what = c("mu", "sigma", "nu", "tau"), ...)
+## S3 method for class 'gamlss':
+terms(x, what = c("mu", "sigma", "nu", "tau"), ...)
+## S3 method for class 'gamlss':
+model.matrix(object, what = c("mu", "sigma", "nu", "tau"), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+a gamlss object</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+a gamlss object</td></tr>
+<tr valign="top"><td><code>object</code></td>
+<td>
+a gamlss object</td></tr>
+<tr valign="top"><td><code>what</code></td>
+<td>
+for which parameter to extract the model.frame, terms or model.frame </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+a model.frame, a model.matrix or terms</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>). 
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="gamlss.html">gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(aids)
+mod&lt;-gamlss(y~poly(x,3)+qrt, family=PO, data=aids) # 
+model.frame(mod)
+model.matrix(mod)
+terms(mod, "mu")
+rm(mod)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss</em> version 1.7-9 <a href="00Index.html">Index]</a></div>
+
+</body></html>
