@@ -13,7 +13,7 @@ additive.fit <-function(x, y, w, s, who, smooth.frame, maxit = 30, tol = 0.001, 
 #    smooth.frame : the data frame to find the smooth terms 
 # Note; the lev component of the smooths is the diagonal hat matrix elements
 # for the NONLINEAR part of the fit.
-#The smoother can return both the linear and nonlinear parts, although only
+# The smoother can return both the linear and nonlinear parts, although only
 # the nonlinear part is strictly necessary. 
 #
     if(inherits(smooth.frame, "data.frame")) {
