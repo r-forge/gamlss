@@ -45,8 +45,8 @@ term.plot <- function (object,
 ## get all terms
       par.terms <- object[[paste(what, "terms", sep=".")]]
       par.attr  <- attributes(par.terms)
-          terms <- if (is.null(terms)) lpred(object, what = what, type = "terms", se = se)
-                  else lpred(object, what = what, type = "terms", se = se, terms = terms)
+          terms <- if (is.null(terms)) lpred(object, what = what, type = "terms", se.fit = se)
+                  else lpred(object, what = what, type = "terms", se,fit = se, terms = terms)
           n.tms <- ncol(tms <- as.matrix(if (se) terms$fit  else terms))
 ## if the parameters has only a constant fitted stop
      if (n.tms == 0)

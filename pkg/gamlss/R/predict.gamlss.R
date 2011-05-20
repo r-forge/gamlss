@@ -1,3 +1,11 @@
+## TO DO clear and put in gamlss
+##   i) check the term option 
+##  ii) NA coefficients should be checked
+##  iii) what happends if data is not declared   
+##-------------------------------------------------------------------------------------------
+## last change 12-04-11 DS
+## this corrects a bug the reported by Gillian Heller where offset was used to fit the model 
+## the following comment is old 
 # there is a problem with predict and  lpred
 # the type = "response" is not working in
 # the link is not the default. The reason is that in 
@@ -5,12 +13,12 @@
 # family(object)[1] do not pick up if the link is not the default   
 # maybe this will do
 #paste(family(m1)[1],"(",what,".link=",eval(parse(text=(paste("family$",what,".link", sep="")))),")", sep="")
-# 
+#--------------------------------------------------------------------------------------------- 
 ### The predict.gamlss function 
 ### Thursday, June 17, 2004 at 10:23 
 ### it is based on the safe.predict.gam() of Trevor Hastie
 ### author: Mikis Stasinopoulos
-### last change Thursday, July 22, 2004 
+### last change Thursday,  12-04-11 DS
 ### BUGS
 ### 1) the type = "terms" is not working : fixed
 ### 2) offset is not working : this is fixed but needs checking
@@ -25,7 +33,9 @@ predict.gamlss <- function(object,
                            data = NULL, ...)                                                                  
 {
 ## this little function put data frames together 
-##  originated from the R-help, written by B. Ripley
+##  originated from an the R-help reply by B. Ripley
+##------------------------------------------------------------------------------
+##------------------------------------------------------------------------------
 ##-------- concat starts here
 concat <- function(..., names=NULL) 
   { 
@@ -50,6 +60,10 @@ concat <- function(..., names=NULL)
     return( data.frame( data, source=namelist) ) 
   } 
 ##----------concat finish here
+##--------------------------------------------------------------------------------------------
+##--------------------------------------------------------------------------------------------
+##   main function starts here
+##----------------------------
 ## If no new data just use lpred() and finish
 if (is.null(newdata))  # 
     {
@@ -59,6 +73,7 @@ if (is.null(newdata))  #
 ## at the moment se.fit is not supported for new data
 if (se.fit) 
     warning(" se.fit = TRUE is not supported for new data values at the moment \n")
+##  stop if newdata is not data frame
 if (!(is.atomic(newdata) | inherits(newdata, "data.frame")))
     stop("newdata must be a data frame or a frame mumber")
 ## getting which parameter and type   
@@ -88,7 +103,7 @@ if (length(parform)==3)
 ## define the terms 
      Terms <- terms(parform)
 ## get the offset
- offset <- if (!is.null(off.num <- attr(Terms, "offset"))) # new 
+ offsetVar <- if (!is.null(off.num <- attr(Terms, "offset"))) # new 
              eval(attr(Terms, "variables")[[off.num + 1]], data) 
 ## model frame 
 # browser()
@@ -104,50 +119,40 @@ if (length(parform)==3)
        #yaug <- as.vector(c(y,zeros))
        #waug <- as.vector(c(w,zeros))
 ## for keeping only the original data
-  onlydata <- data$source == "data"
+  onlydata <- data$source == "data" # TRUE or FALSE
 ## whether additive terms are involved in the fitting 
    smo.mat <- object[[paste(what,"s",sep=".")]]
 ## if offset take it out from fitting
-if(!is.null(off.num))
-         y <- y - offset[onlydata]
+if (!is.null(off.num))
+         y <- (y - offsetVar[onlydata])
 ## if smoothing 
 if (!is.null(smo.mat))
       {
      n.smooths <- dim(smo.mat)[2]
-             y <- y - smo.mat %*% rep(1, n.smooths)
+             y <- (y - smo.mat %*% rep(1, n.smooths))
       }
 ## refit the model
     refit <- lm.wfit(X[onlydata,  , drop = FALSE], y, w)
 ## ckeck the residuals if they are zero
-if (any(abs(resid(refit))>1e-008)) 
+##if (any(abs(resid(refit))>1e-005)) 
+if (abs(sum(resid(refit)))>1e-001||abs(sum(coef(object, what=what)-coef(refit), na.rm=TRUE))>1e-005)
 warning(paste("There is a discrepancy  between the original and the re-fit",
                " \n used to achieve 'safe' predictions \n ", sep = "" ))  
 ## this is disturbing fit and refit have different coefficients  why?
 ## fit <- lm.wfit(X, yaug, waug)
 ## get the coefficients
-     coef <- refit$coef
-       nX <- dimnames(X)
-## only the newdata rows
- rownames <- nX[[1]][!onlydata]
-    nrows <- sum(!onlydata)
-## whether they are NA in coefficients
-      nac <- is.na(coef)
-assign.coef <- attr(X, "assign")
-## !collapse is for "terms"     
- collapse <- type != "terms"   
-#if(any(nac)) 
-#    {
-#        coef <- coef[!nac]
-## this is not working since the assign.sub do not exist in R
-        #assign.coef <- assign.sub(assign.coef, !nac)
- #       assign.coef <- assign.coef[!nac]  
- #       Xpred <- X[!onlydata, !nac]
- #   }
-#    else 
-    Xpred <- X[!onlydata, ]
-    Xpred <-matrix(Xpred, nrow=nrows)
-## if terms 
-  if(!collapse) 
+       coef <- refit$coef         ## save the coefficints
+         nX <- dimnames(X)        ## the names of rows and columns 
+   rownames <- nX[[1]][!onlydata] ## only the newdata rows
+      nrows <- sum(!onlydata)     ## the number of rows in the new data
+        nac <- is.na(coef)        ## whether they are NA in coefficients
+assign.coef <- attr(X, "assign")  ## X is a matrix
+   collapse <- type != "terms"## !collapse is for whether type is not "terms"     
+      Xpred <- X[!onlydata,]
+      Xpred <- matrix(Xpred, nrow=nrows) # I think this probably is not needed sinse allready a matrix
+    
+# I will check this later      
+  if (!collapse)       ## whether type=="terms" 
     { 
           aa <- attr(X, "assign")
           ll <- attr(Terms, "term.labels")
@@ -204,12 +209,12 @@ dimnames(pred) <- list(rownames(newdata), names(asgn))
              #   if (se.fit) 
              #     ip <- ip[, terms, drop = FALSE]
             }
-    } # end terms
-    else 
-    { # for "link" and "response"
+    } ## end if for terms 
+    else  ## if type is not terms but "link" or "response" 
+    { 
      pred <- drop(Xpred[, !nac, drop = FALSE] %*% coef[!nac])
     if (!is.null(off.num) && collapse)
-     pred <- pred + offset[!onlydata]   
+     pred <- pred + offsetVar[!onlydata]   
     }
 ## 
 ## now the smoothing part
@@ -217,21 +222,21 @@ dimnames(pred) <- list(rownames(newdata), names(asgn))
 if (!is.null(smo.mat))
       {
       cat("new prediction", "\n")
-       smooth.labels <- dimnames(smo.mat)[[2]] # getting the labels i.e. "pb(Fl)" "pb(A)"
+       smooth.labels <- dimnames(smo.mat)[[2]]       ## getting the labels i.e. "pb(Fl)" "pb(A)"
               pred.s <- array(0, c(nrows, n.smooths), list(names(pred), 
-                            dimnames(smo.mat)[[2]])) # creating the prediction matrix 
-                        # smooth.labels[smooth.labels%in%colnames(X)]    
-     #  smooth.wanted <- smooth.labels[match(smooth.labels, colnames(X), 0) > 0] 
+                            dimnames(smo.mat)[[2]])) ## creating the prediction matrix 
+                                 # smooth.labels[smooth.labels%in%colnames(X)]    
+                                 #  smooth.wanted <- smooth.labels[match(smooth.labels, colnames(X), 0) > 0] 
         smooth.calls <- lapply(m[smooth.labels], attr, "call") # i.e $`pb(Fl)`
                                                                #     gamlss.pb(data[["pb(Fl)"]], z, w)
-                data <- subset(m, onlydata, drop=FALSE)        # original data
- attr(data, "class") <- NULL 
-               new.m <- subset(m, !onlydata, drop=FALSE)       #new data
+                data <- subset(m, onlydata, drop=FALSE)        ## get the  original data
+ attr(data, "class") <- NULL                                   ## note that m is the data.frame with all data 
+               new.m <- subset(m, !onlydata, drop=FALSE)       ## get the new data
 attr(new.m, "class") <- NULL
-           residuals <- object[[paste(what,"wv",sep=".")]]-object[[paste(what,"lp",sep=".")]] 
+           residuals <-  if (!is.null(off.num)) object[[paste(what,"wv",sep=".")]] - object[[paste(what,"lp",sep=".")]]+offsetVar[onlydata]
+                         else object[[paste(what,"wv",sep=".")]] - object[[paste(what,"lp",sep=".")]]
        for(TT in smooth.labels)
          { 
-          #browser()
            #if (!(substr(TT,start=1,stop=2)%in%c("lo","vc")))
            if (!is.matrix(m[[TT]]))
             attributes(data[[TT]]) <- attributes(m[[TT]])

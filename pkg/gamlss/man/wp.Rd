@@ -6,17 +6,19 @@ Provides single or multiple worm plots for GAMLSS fitted objects. This is
 a diagnostic tool for checking the residuals within different ranges (by default not overlapping) of the explanatory variable
           }
 \usage{
-wp(object, xvar = NULL, n.inter = 4, xcut.points = NULL, 
+wp(object=NULL, xvar = NULL,  resid = NULL, n.inter = 4,
+    xcut.points = NULL, 
    overlap = 0, xlim.all = 4, xlim.worm = 3.5, 
    show.given = TRUE, line = TRUE, 
-   ylim.all = 12 * sqrt(1/length(fitted(object))), 
-   ylim.worm = 12 * sqrt(n.inter/length(fitted(object))), 
+   ylim.all = 12 * sqrt(1/length(resid)), 
+   ylim.worm = 12 * sqrt(n.inter/length(resid)), 
    cex = 1, pch = 21, ...)
 }
 
 \arguments{
-  \item{object}{a GAMLSS fitted object}
+  \item{object}{a GAMLSS fitted object or any other fitted model where the resid() method works (preferably it should be quantile residuals)}
   \item{xvar}{ the explanatory variable against which the worm plots will be plotted }
+  \item{resid}{if object is missing this argument can be used to specify the residual vector (again it should a quantile residuals or it be assumed to come from a normal distribution)}
   \item{n.inter}{the number of intervals in which the explanatory variable \code{xvar} will be cut}
   \item{xcut.points}{the x-axis cut off points e.g. \code{c(20,30)}. If \code{xcut.points=NULL} then the \code{n.inter} argument is activated }
   \item{overlap}{how much overlapping in the \code{xvar} intervals. Default value is \code{overlap=0} for non overlapping intervals}

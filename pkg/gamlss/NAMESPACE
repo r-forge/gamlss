@@ -27,7 +27,8 @@ export(gamlss, gamlss.control, glim.control, is.gamlss,
        predictAll, #own.linkfun, own.linkinv, own.mu.eta,own.valideta,
         VGD, VGD1, VGD2, TGD,
         edf, edfAll,
-        LR.test, dop)
+        LR.test, dtop,
+        gamlssML)
 
 
 
@@ -75,3 +76,7 @@ S3method(predict, gamlss)
 S3method(model.matrix, gamlss)
 S3method(vcov, gamlss)
 S3method(logLik, gamlss)
+
+
+S3method(fitted, gamlssML)
+S3method(vcov, gamlssML)

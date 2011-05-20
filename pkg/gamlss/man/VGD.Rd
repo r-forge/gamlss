@@ -24,13 +24,13 @@ distribution  of the model, the terms in the model or  degrees of freedom
 for smoothing terms.
 }
 \usage{
-VGD(formula = NULL, sigma.fo = ~1, nu.fo = ~1, tau.fo = ~1, 
+VGD(formula = NULL, sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1, 
     data = NULL, family = NO, 
     control = gamlss.control(trace = FALSE), rand = NULL, ...)
-VGD1(formula = NULL, sigma.fo = ~1, nu.fo = ~1, tau.fo = ~1, 
+VGD1(formula = NULL, sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1, 
     data = NULL, family = NO, 
     control = gamlss.control(trace = FALSE), rand = NULL, ...)
-VGD2(formula = NULL, sigma.fo = ~1, nu.fo = ~1, tau.fo = ~1, 
+VGD2(formula = NULL, sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1, 
     data = NULL, family = NO, 
     control = gamlss.control(trace = FALSE), 
     newdata = NULL, ...)
@@ -39,9 +39,9 @@ TGD(object, newdata = NULL, ...)
 \arguments{
   \item{object}{ a gamlss object}
   \item{formula}{ a gamlss formula for \code{mu} (including the response on the left)}
-  \item{sigma.fo}{a formula for  \code{sigma} }
-  \item{nu.fo}{ a formula for  \code{nu} }
-  \item{tau.fo}{ a formula for  \code{tau} }
+  \item{sigma.formula}{a formula for  \code{sigma} }
+  \item{nu.formula}{ a formula for  \code{nu} }
+  \item{tau.formula}{ a formula for  \code{tau} }
   \item{data}{the data set used for the fitting}
   \item{newdata}{the data set to be used for validation ot test}
   \item{family}{a \code{\link[gamlss.dist]{gamlss.family}} object }
@@ -83,16 +83,16 @@ rand <- sample(2, 610, replace=TRUE, prob=c(0.6,0.4))
 # the proportions in the sample
 table(rand)/610
 # VGD needs a factor
-VGD(y~pb(x,df=2),sigma.fo=~pb(x,df=1), data=abdom, family=LO, rand=rand)
+VGD(y~pb(x,df=2),sigma.formula=~pb(x,df=1), data=abdom, family=LO, rand=rand)
 # VGD1 needs a factor and has different output
-VGD1(y~pb(x,df=2),sigma.fo=~pb(x,df=1), data=abdom, family=LO, rand=rand)
+VGD1(y~pb(x,df=2),sigma.formula=~pb(x,df=1), data=abdom, family=LO, rand=rand)
 # using VGD2 needs two different sets of data 
-VGD2(y~pb(x,df=2),sigma.fo=~pb(x,df=1), data=abdom[rand==1,], family=LO,
+VGD2(y~pb(x,df=2),sigma.formula=~pb(x,df=1), data=abdom[rand==1,], family=LO,
       newdata=abdom[rand==2,] )
 #fit in the old data
 olddata<-abdom[rand==1,]
-m1<-gamlss(y~pb(x,df=2),sigma.fo=~pb(x,df=1), data=olddata, family=LO)
-# get the gloval devianve in the new data
+m1<-gamlss(y~pb(x,df=2),sigma.formula=~pb(x,df=1), data=olddata, family=LO)
+# get the global deviance in the new data
 newdata<-abdom[rand==2,] 
 TGD(m1, newdata=newdata)
 }

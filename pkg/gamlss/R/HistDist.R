@@ -207,7 +207,7 @@ switch(typeDist,
              else
                 {
                  y1 <- eval(newcall) # find the fitted values 
-                 fy <- if (is.null(freq)) factor(y,level=x1) else factor(rep(y,freq),level=x1)
+                 fy <- if (is.null(freq)) factor(y,levels=x1) else factor(rep(y,freq),levels=x1)
             notresy <- if (is.null(freq)) factor(y) else factor(rep(y,freq))# RR DS Friday, February 12, 2010 at 17:41
                 dft <-data.frame(tabley<- xtabs(~fy))# get the table    
                #===================================================================

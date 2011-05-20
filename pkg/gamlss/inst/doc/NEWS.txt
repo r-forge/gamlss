@@ -20,12 +20,17 @@ or
    r.rigby@londonmet.ac.uk
 ---------------------------------------------------------------------
 
-version 4.0-6
+version 4.0-8
 
 
 1. pvc() : has been modified to allow fixing the dfs when the "by" argument   is a factor (Tim Cole suggest it).
 
-2. 
+2. predict.gamlss(): now works with offsets
+
+3. wp(): now works with any fitted object which has the method resid()
+
+4. dop() is renamed dtop() and now works with any fitted object which has      the method resid()
+
 
 version 4.0.3
 

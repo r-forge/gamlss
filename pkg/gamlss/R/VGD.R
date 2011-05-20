@@ -3,9 +3,9 @@
 #----------------------------------------------------------------------------------------
 # this is the original function
 VGD <-function(formula = NULL, 
-             sigma.fo =~1, 
-                nu.fo =~1, 
-               tau.fo =~1, 
+        sigma.formula =~1, 
+           nu.formula =~1, 
+          tau.formula =~1, 
                  data = NULL,
                family = NO,  
               control = gamlss.control(trace=FALSE),
@@ -21,7 +21,7 @@ VGD <-function(formula = NULL,
         if (is.null(data)) stop("the data argument is needed in VGD")
       dataor <- subset(data, rand==1)
       datava <- subset(data, rand==2)    
-          m1 <- gamlss(formula=formula, sigma.fo=sigma.fo, nu.fo=nu.fo, tau.fo=tau.fo,
+          m1 <- gamlss(formula=formula, sigma.formula=sigma.formula, nu.formula=nu.formula, tau.formula=tau.formula,
                       data=dataor, family=family, control=control, ...) #
          nmu <- predict(m1,newdata=datava, type="response", data=dataor)
      if ("sigma"%in% names(fname$par))  
@@ -74,9 +74,9 @@ VGD <-function(formula = NULL,
 #----------------------------------------------------------------------------------------
 # identical to VGD put the output is defferent 
 VGD1 <-function(formula = NULL, 
-             sigma.fo =~1, 
-                nu.fo =~1, 
-               tau.fo =~1, 
+        sigma.formula =~1, 
+           nu.formula =~1, 
+          tau.formula =~1, 
                  data = NULL,
                family = NO,  
               control = gamlss.control(trace=FALSE),
@@ -92,7 +92,7 @@ VGD1 <-function(formula = NULL,
         if (is.null(data)) stop("the data argument is needed in VGD")
       dataor <- subset(data, rand==1)
       datava <- subset(data, rand==2)    
-          m1 <- gamlss(formula=formula, sigma.fo=sigma.fo, nu.fo=nu.fo, tau.fo=tau.fo,
+          m1 <- gamlss(formula=formula, sigma.formula=sigma.formula, nu.formula=nu.formula, tau.formula=tau.formula,
                       data=dataor, family=family, control=control, ...) #
          fit <- predictAll(m1,newdata=datava, type="response", data=dataor)
          if (fname$family[[1]] %in% gamlss:::.gamlss.bi.list)# if binomial
@@ -133,9 +133,15 @@ VGD1 <-function(formula = NULL,
  }
 #----------------------------------------------------------------------------------------
 # identical to VGD1 but uses newdata rather that rand as argument
-VGD2<- function (formula = NULL, sigma.fo = ~1, nu.fo = ~1, tau.fo = ~1, 
-    data = NULL, family = NO, control = gamlss.control(trace = FALSE), 
-    newdata = NULL, ...) 
+VGD2<- function (formula = NULL, 
+           sigma.formula = ~1, 
+              nu.formula = ~1, 
+             tau.formula = ~1, 
+                    data = NULL, 
+                  family = NO, 
+                 control = gamlss.control(trace = FALSE), 
+                 newdata = NULL, 
+                 ...) 
 {
     fname <- as.gamlss.family(family)
     dfun <- paste("d", fname$family[[1]], sep = "")
@@ -146,8 +152,8 @@ VGD2<- function (formula = NULL, sigma.fo = ~1, nu.fo = ~1, tau.fo = ~1,
         stop("no neadata is set in VGD")
     if (is.null(data)) 
         stop("the data argument is needed in VGD")
-    m1 <- gamlss(formula = formula, sigma.fo = sigma.fo, nu.fo = nu.fo, 
-        tau.fo = tau.fo, data = data, family = family, control = control, 
+    m1 <- gamlss(formula = formula, sigma.formula = sigma.formula, nu.formula = nu.formula, 
+        tau.formula = tau.formula, data = data, family = family, control = control, 
         ...)
     nfitted <- predictAll(m1, newdata=newdata, data=data)
      if (fname$family[1] %in% gamlss:::.gamlss.bi.list)# if binomial

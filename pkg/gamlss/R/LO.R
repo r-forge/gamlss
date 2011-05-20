@@ -14,7 +14,7 @@ lo <-function(..., span = 0.5, df = NULL, degree = 1)
     vars <- list(...)
     locall <- sys.call()
     chcall <- deparse(locall)
-    mcall <- match.call(expand = FALSE)
+    mcall <- match.call(expand.dots = FALSE)
     wspan <- !is.null(mcall$span) # 
     mcall$... <- NULL
     nvars <- length(vars)
