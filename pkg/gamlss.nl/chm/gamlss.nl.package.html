@@ -1,0 +1,101 @@
+<html><head><title>The GAMLSS add on package for fiting parametric non linear models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>gamlss-nl-package(gamlss.nl)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   gamlss-nl-package">
+<param name="keyword" value="R:   gamlss-nl">
+<param name="keyword" value=" The GAMLSS add on package for fiting parametric non linear models">
+</object>
+
+
+<h2>The GAMLSS add on package for fiting parametric non linear models</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The main purpose of this package is to allow non-linear fitting within a GAMLSS model.
+The main function <code>nlgamlss()</code> can fit any parametric
+(up to four distribution parameters) GAMLSS family of distributions.
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+<table summary="Rd table">
+<tr>
+  <td align="left">Package: </td>  <td align="left"> gamlss-nl</td>
+</tr>
+<tr>
+  <td align="left"> Type: </td>  <td align="left"> Package</td>
+</tr>
+<tr>
+  <td align="left"> Version: </td>  <td align="left"> 1.5.0 </td>
+</tr>
+<tr>
+  <td align="left"> Date: </td>  <td align="left"> 2005-12-12</td>
+</tr>
+<tr>
+  <td align="left"> License: </td>  <td align="left"> GPL (version 2 or later) </td>
+</tr>
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos &lt;d.stasinopoulos@londonmet.ac.uk&gt;, Bob Rigby &lt;r.rigby@londonmet.ac.uk&gt; based on work 
+of Jim Lindsey and Philippe Lambert.
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,
+(with discussion), <EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('gamlss', 'gamlss.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(la)
+# fitting the Johnson's Su distribtion to the data
+modJSU   &lt;- nlgamlss(y=PET60, mu.fo= ~bflow*(1-p1*exp(-p2/bflow)), sigma.formula=~1, 
+                       nu.fo=~1, mu.start = c(.6, 110), sigma.start= 3, nu.start=1, 
+                       tau.start=0.6, family=JSU, data=la) 
+plot(modJSU)
+summary(modJSU)
+vcov(modJSU)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.nl</em> version 1.7-0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

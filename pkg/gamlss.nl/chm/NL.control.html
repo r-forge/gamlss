@@ -1,0 +1,170 @@
+<html><head><title>Auxiliary for Controlling non linear GAMLSS Fitting</title>
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>NL.control(gamlss.nl)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   NL.control">
+<param name="keyword" value=" Auxiliary for Controlling non linear GAMLSS Fitting">
+</object>
+
+
+<h2>Auxiliary for Controlling non linear GAMLSS Fitting</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This ia an auxiliary function  used to control the iterations  for <code>nlgamlss</code> fitting. Typically
+only used when calling <code>nlgamlss</code> function with the option <code>control</code>. 
+Since the <code>nlgamlss</code> uses <code>nlm</code> for fitting all of the <code>NL.control</code> argument are passed to 
+<code>nlm</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+NL.control(fscale = 1,  typsize = NULL, stepmax = NULL, iterlim = 100, 
+           ndigit = 10, steptol = 1e-05, 
+           gradtol = 1e-05, print.level = 0, check.analyticals = TRUE, 
+           hessian = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>fscale</code></td>
+<td>
+an estimate of the size of log-likelihood at the minimum with default equal 1.</td></tr>
+<tr valign="top"><td><code>typsize</code></td>
+<td>
+this argument is passed to <code>nlm</code> and it is an estimate of the size of each
+parameter at the minimum. If its value is  NULL (the default value) 
+the <code>typsize</code>is set within the <code>nlgamlss</code> function to <code>typsize=abs(p0)</code> 
+where <code>p0</code> is the vector containing the starting values
+of all the parameters to be maximized. <code>p0</code> is defined within <code>nlgamlss</code></td></tr>
+<tr valign="top"><td><code>stepmax</code></td>
+<td>
+this argument is passed to <code>nlm</code> and it is  a positive scalar which
+gives the maximum allowable scaled step length. 
+<code>stepmax</code> is used to prevent steps which would cause the optimization
+function to overflow, to prevent the algorithm from leaving the area of interest in parameter
+space, or to detect divergence in the algorithm. <code>stepmax</code> would be chosen small enough
+to prevent the first two of these occurrences, but should be larger than any anticipated
+reasonable step. If its value is  NULL (the default value) it is defined within <code>nlgamlss</code> as
+<code>stepmax=sqrt(p0 %*% p0)</code></td></tr>
+<tr valign="top"><td><code>iterlim</code></td>
+<td>
+a positive integer specifying the maximum number of
+iterations to be performed before the program is terminated. The default is 100</td></tr>
+<tr valign="top"><td><code>ndigit</code></td>
+<td>
+the number of significant digits in the log-likelihood function. The default is 10</td></tr>
+<tr valign="top"><td><code>steptol</code></td>
+<td>
+A positive scalar providing the minimum allowable relative
+step length. The defaults is 1e-05</td></tr>
+<tr valign="top"><td><code>gradtol</code></td>
+<td>
+a positive scalar giving the tolerance at which the scaled
+gradient is considered close enough to zero to terminate the
+algorithm.  The scaled gradient is a measure of the relative
+change in log-likelihood in each direction 'p[i]' divided by the
+relative change in 'p[i]'. The default is 1e-05</td></tr>
+<tr valign="top"><td><code>print.level</code></td>
+<td>
+this argument determines the level of printing which is
+done during the minimization process.  The default value of
+'0' means that no printing occurs, a value of '1' means that
+initial and final details are printed and a value of 2 means
+that full tracing information is printed.</td></tr>
+<tr valign="top"><td><code>check.analyticals</code></td>
+<td>
+a logical scalar specifying whether the analytic
+gradients and Hessians, if they are supplied, should be
+checked against numerical derivatives at the initial
+parameter values. This can help detect incorrectly formulated
+gradients or Hessians.</td></tr>
+<tr valign="top"><td><code>hessian</code></td>
+<td>
+if <code>TRUE</code>, the hessian of the log likelihood at the maximum is returned ,the default is <code>hessian=TRUE</code> </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+See the R function <code>nlm</code> and the fist two refernces below for details of the algotithm.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list with the arguments as components.</p>
+
+<h3>Note</h3>
+
+<p>
+This functions supports the function <code>nlgamlss</code>
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Dennis, J. E. and Schnabel, R. B. (1983) <EM>Numerical Methods for
+Unconstrained Optimization and Nonlinear Equations.</EM>
+Prentice-Hall, Englewood Cliffs, NJ.
+</p>
+<p>
+Schnabel, R. B., Koontz, J. E. and Weiss, B. E. (1985) A modular
+system of algorithms for unconstrained minimization. <EM>ACM Trans.
+Math. Software</EM>, <B>11</B>, 419-440.
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="nlgamlss.html">nlgamlss</a></code>, <code><a onclick="findlink('stats', 'nlm.html')" style="text-decoration: underline; color: blue; cursor: hand">nlm</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.nl</em> version 1.6-0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

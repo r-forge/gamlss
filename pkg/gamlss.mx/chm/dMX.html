@@ -1,0 +1,118 @@
+<html><head><title>Evaluate the d (pdf) and p (cdf) functions from GAMLSS mixtures</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>dMX(gamlss.mx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   dMX">
+<param name="keyword" value="R:   pMX">
+<param name="keyword" value=" Evaluate the d (pdf) and p (cdf) functions from GAMLSS mixtures">
+</object>
+
+
+<h2>Evaluate the d (pdf) and p (cdf) functions from GAMLSS mixtures</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The functions <code>dMX</code> and <code>pMX</code> can be used to evalaluate the 
+pdf (p function) and the cdf (p function) repectively from a gamlss.family mixture.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+dMX(y, mu = list(mu1 = 1, mu2 = 5), sigma = list(sigma1 = 1, sigma2 = 1), 
+       nu = list(nu1 = 1, nu2 = 1), tau = list(tau1 = 1, tau2 = 1), 
+       pi = list(pi1 = 0.2, pi2 = 0.8), family = list(fam1 = "NO", fam2 = "NO"), 
+       log = FALSE, ...)
+pMX(q, mu = list(mu1 = 1, mu2 = 5), sigma = list(sigma1 = 1, sigma2 = 1), 
+       nu = list(nu1 = 1, nu2 = 1), tau = list(tau1 = 1, tau2 = 1), 
+       pi = list(pi1 = 0.2, pi2 = 0.8), family = list(fam1 = "NO", fam2 = "NO"), 
+       log = FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y,q</code></td>
+<td>
+vector of quantiles </td></tr>
+<tr valign="top"><td><code>mu</code></td>
+<td>
+a vector of <code>mu</code>'s</td></tr>
+<tr valign="top"><td><code>sigma</code></td>
+<td>
+a vector of <code>sigma</code>'s</td></tr>
+<tr valign="top"><td><code>nu</code></td>
+<td>
+a vector of <code>nu</code>'s </td></tr>
+<tr valign="top"><td><code>tau</code></td>
+<td>
+a vector of <code>tau</code>'s </td></tr>
+<tr valign="top"><td><code>pi</code></td>
+<td>
+a vector of <code>pi</code>'s </td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+a vector of GAMLSS <code>family</code>'s </td></tr>
+<tr valign="top"><td><code>log</code></td>
+<td>
+whether the  <code>log</code> of the function or not</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+Returns values or pdf  or cdf.</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+
+
+
+<h3>Examples</h3>
+
+<pre>
+fyNO&lt;-dMX(y=seq(0,3,.01), mu=list(1.253, 0.1876), sigma=list(exp(-0.6665 ), exp(-2.573 )),
+                  pi=list(0.4079609, 0.5920391 ), family=list("NO","NO") )
+plot(fyNO~seq(0,3,.01), type="l")                  
+FyNO&lt;-pMX(q=seq(0,3,.01), mu=list(1.253, 0.1876), sigma=list(exp(-0.6665 ), exp(-2.573 )),
+                  pi=list(0.4079609, 0.5920391 ), family=list("NO","NO") )
+plot(FyNO~seq(0,3,.01), type="l")  
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.mx</em> version 1.7-0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

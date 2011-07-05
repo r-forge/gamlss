@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.mx:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.mx:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.mx-package">
+<param name="Local" value="gamlss.mx.package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="brains">
+<param name="Local" value="enzyme.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dMX">
+<param name="Local" value="dMX.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="enzyme">
+<param name="Local" value="enzyme.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.mx">
+<param name="Local" value="gamlss.mx.package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlssMX">
+<param name="Local" value="gamlssMX.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlssMXfits">
+<param name="Local" value="gamlssMX.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlssNP">
+<param name="Local" value="gamlssNP.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MX.control">
+<param name="Local" value="MX.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NP.control">
+<param name="Local" value="NP.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pMX">
+<param name="Local" value="dMX.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.mx:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="A function to fit finite mixtures using the gamlss family of distributions">
+<param name="Local" value="gamlssNP.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Control function for gamlssNP">
+<param name="Local" value="NP.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Data used in gamlss.mx">
+<param name="Local" value="enzyme.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Evaluate the d (pdf) and p (cdf) functions from GAMLSS mixtures">
+<param name="Local" value="dMX.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to fit finite mixture of gamlss family distributions">
+<param name="Local" value="gamlssMX.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The control function for gamlssMX">
+<param name="Local" value="MX.control.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The GAMLSS add on package for mixture distributions">
+<param name="Local" value="gamlss.mx.package.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

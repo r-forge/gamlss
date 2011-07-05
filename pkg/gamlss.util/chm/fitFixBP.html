@@ -1,0 +1,201 @@
+<html><head><title>Functions to Fit Univariate Break Point Models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>fitFixBP(gamlss.util)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   fitFixBP">
+<param name="keyword" value="R:   fitFreeKnots">
+<param name="keyword" value=" Functions to Fit Univariate Break Point Models">
+</object>
+
+
+<h2>Functions to Fit Univariate Break Point Models</h2>
+
+
+<h3>Description</h3>
+
+<p>
+There are two functions here. The functions <code>fitFixBP</code> allows the fit a univariate regression using 
+piecewise polynomials with known break points while the function <code>fitFreeKnots</code> estimates the break points.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+fitFixBP(x, y, w = NULL, knots = NULL, degree = 3, fixed = NULL, ...)
+fitFreeKnots(x, y, w = NULL, knots = NULL, degree = 3, fixed = NULL, 
+             trace = 0, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+the x variable</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+the  response variable</td></tr>
+<tr valign="top"><td><code>w</code></td>
+<td>
+the prior weights</td></tr>
+<tr valign="top"><td><code>knots</code></td>
+<td>
+the position of the interior knots for  <code>fitFixBP</code> or starting values for  <code>fitFreeKnots</code></td></tr>
+<tr valign="top"><td><code>degree</code></td>
+<td>
+the degree if the piecewise  polynomials</td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+this is to be able to fit fixed break points</td></tr>
+<tr valign="top"><td><code>trace</code></td>
+<td>
+controlling the trace of of <code>optim()</code> </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The functions <code>fitFreeKnots()</code> is loosely based on the  <code>curfit.free.knot()</code> function of package 
+<span class="pkg">DierckxSpline</span> of  Sundar Dorai-Raj and Spencer Graves.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The functions <code>fitFixBP</code> and <code>fitFreeKnots</code> return an object <code>FixBreakPointsReg</code> and 
+<code>FreeBreakPointsReg</code> respectively with the following items:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>fitted.values</code></td>
+<td>
+the fitted values of the model</td></tr>
+<tr valign="top"><td><code>residuals</code></td>
+<td>
+the residuals of the model</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+the degrees of freedom fitted in the model</td></tr>
+<tr valign="top"><td><code>rss</code></td>
+<td>
+the residuals sum of squares</td></tr>
+<tr valign="top"><td><code>knots</code></td>
+<td>
+the knots used in creating the beta-function base</td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+the fixed break points if any</td></tr>
+<tr valign="top"><td><code>breakPoints</code></td>
+<td>
+the interior (estimated) break points (or knots)</td></tr>
+<tr valign="top"><td><code>coef</code></td>
+<td>
+the coefficients of the linear  part of the model</td></tr>
+<tr valign="top"><td><code>degree</code></td>
+<td>
+the degree of the piecewise polynomial</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+the y variable</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+the x variable</td></tr>
+<tr valign="top"><td><code>w</code></td>
+<td>
+the prior weights</td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+In predicting from a fitted <code>FixBreakPointsReg</code> or <code>FreeBreakPointsReg</code> model there are two choices 
+to be made:  
+The first is to create new end-points for all the x-variables including the <code>newdata</code>. Note that in this case 
+the range of x  could be bigger that the original one if <code>newdata</code> has values outside the original x range.  
+The second is to have the old data end-points which were determine with the original range of x.
+The second choice is implemented as a default in the <code>predict</code> method for <code>FixBreakPointsReg</code> and
+<code>FreeBreakPointsReg</code> objects with  the argument <code>old.x.range=TRUE</code>. Values outside the original x-range 
+in this case will be the determined by the global polynomial fitted to data.  
+If the argument of predict is set to  <code>old.x.range=FALSE</code> the prediction could be possible 
+better outside the x range but would not coincide with the original predictions i.e. fitted(model)
+since the Beta-spline base has changed.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Dierckx, P. (1991) <EM>Curve and Surface Fitting with Splines</EM>, Oxford Science Publications
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>)
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('DierckxSpline', 'curfit.free.knot.html')" style="text-decoration: underline; color: blue; cursor: hand">curfit.free.knot</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# creating  a linear + linear function
+   x &lt;- seq(0,10, length.out=201)
+knot &lt;- 5
+ set.seed(12543)
+ mu &lt;- ifelse(x&lt;=knot,5+0.5*x,5+0.5*x+(x-knot))
+  y &lt;- rNO(201, mu=mu, sigma=.5)
+# plot the data
+ plot(y~x, xlim=c(-1,13), ylim=c(3,17))
+# fit model using fixed break points
+ m1 &lt;- fitFixBP(x, y, knots=5, degree=1)
+knots(m1)
+lines(fitted(m1)~x, col="red")
+m2 &lt;- fitFreeKnots(x, y, knots=5, degree=1)
+knots(m2)
+lines(fitted(m2)~x, col="green", lwd=3)
+points(0:13,predict(m2, newdata=0:13), col="red",pch = 21, bg="blue")
+points(0:13,predict(m2, newdata=0:13, old.x.range=FALSE), col="red",pch = 21, bg="grey")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.util</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

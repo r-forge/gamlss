@@ -1,0 +1,308 @@
+<html><head><title>Fitting non linear Generalized Additive Models for Location Scale and Shape (GAMLSS)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>nlgamlss(gamlss.nl)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   nlgamlss">
+<param name="keyword" value=" Fitting non linear Generalized Additive Models for Location Scale and Shape (GAMLSS)">
+</object>
+
+
+<h2>Fitting non linear Generalized Additive Models for Location Scale and Shape (GAMLSS)</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function is an additional method for fitting GAMLSS models. It suitable to fit
+linear or non linear parametric models using distributions available in the GAMLSS package.
+It is based on the function  <code>stablereg()</code> of the R package <code>stable</code> created by 
+Philippe Lambert and Jim Lindsey which can be found in Jim Lindsey's web page 
+<a href="http://popgen.unimaas.nl/~jlindsey/index.html">http://popgen.unimaas.nl/~jlindsey/index.html</a> (see also Lambert, P. and Lindsey, J.K. (1999)).
+The method is very general but requires starting values for all the parameters. For parametric models it can also
+be used to give the exact (that is taking into the account the correlation between the distributional parameters) asymptotic standard errors.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+nlgamlss(y = NULL, mu.formula = ~1, sigma.formula = ~1, 
+         nu.formula = ~1, tau.formula = ~1, 
+         mu.fix = FALSE, sigma.fix = FALSE, 
+         nu.fix = FALSE, tau.fix = FALSE, all.fix = FALSE, 
+         mu.start = NULL, sigma.start = NULL, 
+         nu.start = NULL, tau.start = NULL, 
+         family = NO(), weights = 1, 
+         exact = FALSE, delta = 1, 
+         data = parent.frame(), 
+         control = NL.control(), 
+         llik.output = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+the response variable <code>y</code>. Note the difference between <code>gamlss</code> and <code>nlgamss</code> in declaring the <code>y</code> variable
+In <code>gamlss</code>, <code>y~x</code> is used for modelling the location parameters while here you need <code>y=y</code> and <code>mu.fo=x</code> </td></tr>
+<tr valign="top"><td><code>mu.formula</code></td>
+<td>
+a formula object for fitting a model to the location mu parameter, e.g. <code>mu.fo=~x</code>
+The <code>mu.formula</code> is a linear or nonlinear language expression
+beginning with <code>~</code> or an R function, describing the regression function for the predictor of the location parameter
+(i.e. after transformation of <code>mu</code> by its link function). <code>mu.start</code> is a vector of initial conditions for the parameters
+in the regression for this parameter. <code>mu.fix</code> is a boolean indicating if an optimization of the likelihood has to be carried
+out on these parameters. If no optimization is desired on the location parameters <code>mu</code>, i.e. when the likelihood has to
+be evaluated or optimized at a fixed location, then <code>mu.fix=TRUE</code> has to be explicitly specified with <code>mu.start</code> indicating 
+the fixed value for the predictor of <code>mu</code>.</td></tr>
+<tr valign="top"><td><code>sigma.formula</code></td>
+<td>
+a formula object for fitting a model to the sigma parameter, as in the <code>mu.formula</code> above,
+e.g.  <code>sigma.formula=~x1+x2</code>. It can be abbreviated to <code>sigma.fo=~x1+x2</code>.  </td></tr>
+<tr valign="top"><td><code>nu.formula</code></td>
+<td>
+a formula object for fitting a model to the nu parameter, e.g. <code>nu.fo=~x</code> </td></tr>
+<tr valign="top"><td><code>tau.formula</code></td>
+<td>
+a formula object for fitting a model to the tau parameter, e.g. <code>tau.fo=~x</code></td></tr>
+<tr valign="top"><td><code>mu.fix</code></td>
+<td>
+whether the mu parameter should be kept fixed in the fitting processes e.g. <code>mu.fix=FALSE</code> </td></tr>
+<tr valign="top"><td><code>sigma.fix</code></td>
+<td>
+whether the sigma parameter should be kept fixed in the fitting processes e.g. <code>sigma.fix=FALSE</code></td></tr>
+<tr valign="top"><td><code>nu.fix</code></td>
+<td>
+whether the nu parameter should be kept fixed in the fitting processes e.g. <code>nu.fix=FALSE</code></td></tr>
+<tr valign="top"><td><code>tau.fix</code></td>
+<td>
+whether the tau parameter should be kept fixed in the fitting processes e.g. <code>tau.fix=FALSE</code></td></tr>
+<tr valign="top"><td><code>all.fix</code></td>
+<td>
+whether all the parameters should be fixed at their starting values. This is a way of evaluating the likelihood function</td></tr>
+<tr valign="top"><td><code>mu.start</code></td>
+<td>
+vector or scalar of initial values for the location parameter mu e.g.  <code>mu.start=4</code> </td></tr>
+<tr valign="top"><td><code>sigma.start</code></td>
+<td>
+vector or scalar of initial values for the scale parameter sigma e.g. <code>sigma.start=1</code>  </td></tr>
+<tr valign="top"><td><code>nu.start</code></td>
+<td>
+vector or scalar of initial values for the parameter nu e.g. <code>nu.start=3</code></td></tr>
+<tr valign="top"><td><code>tau.start</code></td>
+<td>
+vector or scalar of initial values for the location parameter tau e.g. <code>tau.start=2</code> </td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+the distribution family of the gamlss object (see <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>)</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+a vector of weights. Here weights can be used to weight out observations (like in <code>subset</code>)
+or for a weighted likelihood analysis where the contribution of the observations to the
+likelihood differs according to <code>weights</code>.
+The length of <code>weights</code> must be the same as the number of observations in the data.
+By default, the weight is set to one.
+To set  weights to vector w use <code>weights=w</code> </td></tr>
+<tr valign="top"><td><code>exact</code></td>
+<td>
+If TRUE, fits the exact likelihood function for continuous data by integration over y observation intervals usually determined by the rounding used in the measurement of y, see <code>delta</code> below </td></tr>
+<tr valign="top"><td><code>delta</code></td>
+<td>
+Scalar or vector giving the unit of measurement for each response value, set to unity by default.
+For example, if a response is measured to two decimals, delta=0.01. If the response is transformed,
+this must be multiplied by the Jacobian. For example, with a log transformation, delta=1/y.
+The transformation cannot contain unknown parameters. The delta values are used only if <code>exact=TRUE</code> </td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+a data frame containing the variables occurring in the formula.
+If this is missing, the variables should be on the search list.
+e.g. <code>data=aids</code> </td></tr>
+<tr valign="top"><td><code>control</code></td>
+<td>
+this sets the control parameters for the <code>nlm()</code> iterations algorithm.
+The default setting is the <code>NL.control</code> function </td></tr>
+<tr valign="top"><td><code>llik.output</code></td>
+<td>
+is TRUE when the likelihood has to be displayed at each iteration of the optimization </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+Returns a nlgamlss object with components
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>family</code></td>
+<td>
+the distribution family of the nlgamlss object (see <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>)</td></tr>
+<tr valign="top"><td><code>parameters </code></td>
+<td>
+the name of the fitted parameters i.e. <B><code>mu</code></B>, <B><code>sigma</code></B>, <B><code>nu</code></B>, <B><code>tau</code></B> </td></tr>
+<tr valign="top"><td><code>call</code></td>
+<td>
+the call of the nlgamlss function</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+the response variable</td></tr>
+<tr valign="top"><td><code>control</code></td>
+<td>
+the nlgamlss fit control settings</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+the vector of weights</td></tr>
+<tr valign="top"><td><code>G.deviance</code></td>
+<td>
+the global deviance</td></tr>
+<tr valign="top"><td><code>N</code></td>
+<td>
+the number of observations in the fit</td></tr>
+<tr valign="top"><td><code>rqres</code></td>
+<td>
+a function to calculate the normalized (randomized) quantile residuals of the object</td></tr>
+<tr valign="top"><td><code>iter</code></td>
+<td>
+the number of external iterations in the fitting process</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+the type of the distribution or the response variable (continuous , discrete or mixture)</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+which algorithm is used for the fit, JL() in this case</td></tr>
+<tr valign="top"><td><code>aic</code></td>
+<td>
+the Akaike information criterion </td></tr>
+<tr valign="top"><td><code>sbc</code></td>
+<td>
+the Schwatz Bayesian information criterion </td></tr>
+<tr valign="top"><td><code>df.residual</code></td>
+<td>
+the residual degrees of freedom left after the model is fitted</td></tr>
+<tr valign="top"><td><code>df.fit</code></td>
+<td>
+the total degrees of freedom use by the model</td></tr>
+<tr valign="top"><td><code>converged</code></td>
+<td>
+whether the model fitting has have converged as in <code>nlm()</code></td></tr>
+<tr valign="top"><td><code>iter</code></td>
+<td>
+the number of iterations as in <code>nlm()</code></td></tr>
+<tr valign="top"><td><code>residuals</code></td>
+<td>
+the normalized (randomized) quantile residuals of the model</td></tr>
+<tr valign="top"><td><code>coefficients</code></td>
+<td>
+all the fitted coefficients of the model</td></tr>
+<tr valign="top"><td><code>se</code></td>
+<td>
+the standard errors of all the fitted coefficients of the model</td></tr>
+<tr valign="top"><td><code>cov</code></td>
+<td>
+the covariance matrix of all the fitted coefficients of the model</td></tr>
+<tr valign="top"><td><code>corr</code></td>
+<td>
+the correlation matrix of all the fitted coefficients of the model</td></tr>
+<tr valign="top"><td><code>mu.fv</code></td>
+<td>
+the fitted values of the mu model, also  sigma.fv, nu.fv, tau.fv for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.lp</code></td>
+<td>
+the linear predictor of the mu model, also  sigma.lp, nu.lp, tau.lp for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.link</code></td>
+<td>
+the link function for the mu model, also  sigma.link, nu.link, tau.link for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.formula</code></td>
+<td>
+the formula for the mu model, also  sigma.formula, nu.formula, tau.formula for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.coefficients</code></td>
+<td>
+the estimated coefficients of the mu model, also  sigma.coefficients, nu.coefficients, tau.coefficients for the other parameters if present </td></tr>
+<tr valign="top"><td><code>mu.coefficients</code></td>
+<td>
+the standard errors of the coefficients of the mu model, also  sigma.coefficients, nu.coefficients, tau.coefficients for the other parameters if present </td></tr>
+<tr valign="top"><td><code>mu.df</code></td>
+<td>
+the mu degrees of freedom also  sigma.df, nu.df, tau.df for the other parameters if present</td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+The following generic functions can be used with a GAMLSS object: <code>print</code>,  <code>fitted</code>,  <code>coef</code>,  
+<code>residuals</code>, <code>update</code>,  <code>plot</code>, <code>deviance</code>, <code>formula</code>
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a>, Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://popgen.unimaas.nl/~jlindsey/index.html">http://popgen.unimaas.nl/~jlindsey/index.html</a> : Jim Lindsey web page
+</p>
+<p>
+Lambert, P. and Lindsey, J.K. (1999) Analysing financial returns using regression models based on non-symmetric 
+stable distributions. <EM>Applied Statistics</EM> <B>48</B>, 409-424.
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Rigby, R.A. Stasinopoulos, D.M. (2006).  Using the Box-Cox <EM>t</EM> distribution in GAMLSS to mode skewnees and  and kurtosis.
+to appear in <EM>Statistical Modelling</EM>.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2006) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('gamlss', 'gamlss.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss</a></code>, <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(la)
+# fitting a BCPE distribtion to the data
+modBCPE&lt;- nlgamlss(y=PET60, mu.fo=~bflow*(1-(1-exp(p1))*exp(-p2/bflow)),
+                   sigma.formula=~1,  mu.start = c(-.9, 90), 
+                   sigma.start= -2.3, nu.start=0, tau.start=log(2.5),  
+                   family=BCPE, data=la)
+modBCPE
+plot(modBCPE)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.nl</em> version 1.6-0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

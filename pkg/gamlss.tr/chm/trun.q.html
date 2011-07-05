@@ -1,0 +1,145 @@
+<html><head><title>Truncated Inverse Cumulative Density Function of a gamlss.family Distribution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>trun.q(gamlss.tr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   trun.q">
+<param name="keyword" value=" Truncated Inverse Cumulative Density Function of a gamlss.family Distribution">
+</object>
+
+
+<h2>Truncated Inverse Cumulative Density Function of a gamlss.family Distribution</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Creates a function to produce the inverse of a truncated cumulative density function generated from a current GAMLSS family distribution
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+trun.q(par, family = "NO", type = c("left", "right", "both"), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>par</code></td>
+<td>
+a vector with one (for <code>left</code> or <code>right</code> truncation) or two elements for <code>both</code>  </td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+a <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code> object, which is used to define the distribution and the link functions of the various parameters. 
+The distribution families supported by <code>gamlss()</code> can be found in <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>.
+Functions such as BI() (binomial) produce a family object. </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+whether <code>left</code>, <code>right</code> or in <code>both</code> sides truncation is required, (left is the default)  </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+Returns a q family function</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a> and Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="trun.d.html">trun.d</a></code>, <code><a href="trun.q.html">trun.q</a></code>, <code><a href="trun.r.html">trun.r</a></code>, <code><a href="gen.trun.html">gen.trun</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# continuous
+#----------------------------------------------------------------------------------------
+# left
+test1&lt;-trun.q(par=c(0), family="TF", type="left")
+test1(.6)
+qTF(pTF(0)+0.6*(1-pTF(0)))
+#----------------------------------------------------------------------------------------
+# right
+test2 &lt;- trun.q(par=c(10), family="BCT", type="right")
+test2(.6)
+qBCT(0.6*pBCT(10))
+#----------------------------------------------------------------------------------------
+# both
+test3&lt;-trun.q(par=c(-3,3), family="TF", type="both")
+test3(.6)
+qTF(0.6*(pTF(3)-pTF(-3))+pTF(-3))
+#----------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------
+# FOR DISCRETE DISTRIBUTIONS
+# trucated q function
+# left
+test4&lt;-trun.q(par=c(0), family="PO", type="left")
+test4(.6)
+qPO(pPO(0)+0.6*(1-pPO(0)))
+#----------------------------------------------------------------------------------------
+# right
+test5 &lt;- trun.q(par=c(10), family="NBI", type="right")
+test5(.6)
+qNBI(0.6*pNBI(10))
+test5(.6, mu=10, sigma=2)
+qNBI(0.6*pNBI(10, mu=10, sigma=2), mu=10, sigma=2)
+#----------------------------------------------------------------------------------------
+# both
+test6&lt;-trun.q(par=c(0,10), family="NBI", type="both")
+test6(.6)
+qNBI(0.6*(pNBI(10)-pNBI(0))+pNBI(0))
+#----------------------------------------------------------------------------------------
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.tr</em> version 1.8-1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,100 @@
+<html><head><title>The control function for gamlssMX</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>MX.control(gamlss.mx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   MX.control">
+<param name="keyword" value=" The control function for gamlssMX">
+</object>
+
+
+<h2>The control function for gamlssMX</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The function sets controls for the <code>gamlssMX</code> function.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+MX.control(cc = 1e-04, n.cyc = 200, trace = FALSE, 
+        seed = NULL, plot = TRUE, sample = NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cc</code></td>
+<td>
+convergent criterion for the EM</td></tr>
+<tr valign="top"><td><code>n.cyc</code></td>
+<td>
+number of cycles for EM</td></tr>
+<tr valign="top"><td><code>trace</code></td>
+<td>
+whether to  print the EM iterations</td></tr>
+<tr valign="top"><td><code>seed</code></td>
+<td>
+a number for setting the seeds for starting values</td></tr>
+<tr valign="top"><td><code>plot</code></td>
+<td>
+whether to plot the sequence of global deviance up to convergence</td></tr>
+<tr valign="top"><td><code>sample</code></td>
+<td>
+how large the sample to be in the starting values</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Returns a list</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos and Bob Rigby
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,
+(with discussion), <EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('gamlss', 'gamlss.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss</a></code>, <code><a href="gamlssMX.html">gamlssMX</a></code>, <code><a href="gamlssMX.html">gamlssMXfits</a></code>
+</p>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.mx</em> version 2.0-0 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

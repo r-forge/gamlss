@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.tr:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.tr:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.tr-package">
+<param name="Local" value="gamlss.tr.package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gamlss.tr">
+<param name="Local" value="gamlss.tr.package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gen.trun">
+<param name="Local" value="gen.trun.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trun">
+<param name="Local" value="trun.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trun.d">
+<param name="Local" value="trun.d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trun.p">
+<param name="Local" value="trun.p.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trun.q">
+<param name="Local" value="trun.q.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trun.r">
+<param name="Local" value="trun.r.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package gamlss.tr:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Fits a Truncate Distribution from a gamlss.family">
+<param name="Local" value="trun.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generates a Truncate Distribution from a gamlss.family">
+<param name="Local" value="gen.trun.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generates Random Values from a Truncated Density Function of a gamlss.family Distribution">
+<param name="Local" value="trun.r.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The GAMLSS Add On Package for Truncated Distributions">
+<param name="Local" value="gamlss.tr.package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Truncated Cumulative Density Function of a gamlss.family Distribution">
+<param name="Local" value="trun.p.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Truncated Inverse Cumulative Density Function of a gamlss.family Distribution">
+<param name="Local" value="trun.q.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Truncated Probability Density Function of a gamlss.family Distribution">
+<param name="Local" value="trun.d.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

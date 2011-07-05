@@ -1,0 +1,154 @@
+<html><head><title>Function to fit finite mixture of gamlss family distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>gamlssMX(gamlss.mx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   gamlssMX">
+<param name="keyword" value="R:   gamlssMXfits">
+<param name="keyword" value=" Function to fit finite mixture of gamlss family distributions">
+</object>
+
+
+<h2>Function to fit finite mixture of gamlss family distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The  function <code>gamlssMX</code> is design for fitting a K fold non parametric mixture of gamlss family distributions.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gamlssMX(formula = formula(data), pi.formula = ~1, 
+         family = "NO", weights, K = 2, prob = NULL, 
+         data = sys.parent(), control = MX.control(), 
+         g.control = gamlss.control(trace = FALSE), 
+         zero.component = FALSE,   ...)
+gamlssMXfits(n = 5, formula = formula(data), pi.formula = ~1, 
+         family = "NO", weights, K = 2, prob = NULL, 
+         data = sys.parent(), control = MX.control(), 
+         g.control = gamlss.control(trace = FALSE),
+         zero.component = FALSE, ... )
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+This argument it should be a formula (or a list of formulea of length
+K) for modelling the <code>mu</code> parameter of the model. Note that
+modelling the rest of the distributional parameters it can be done
+by using the usual <code>...</code> which passes the arguments to
+<code>gamlss()</code> </td></tr>
+<tr valign="top"><td><code>pi.formula</code></td>
+<td>
+This should be a formula for modelling the prior probabilities as a
+function of explanatory variables. Note that no smoothing of other
+additive terms are allowed here only the usual linear terms. The
+modelling here is done using the <code>multinom()</code> function from
+package <code>nnet</code></td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+This should be a <code>gamlss.family</code> distribution (or a list of
+distributions). Note that if different distributions are used here
+their parameters should be comparable for ease of interpretation.</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+prior weights if needed</td></tr>
+<tr valign="top"><td><code>K</code></td>
+<td>
+the number of finite mixtures with default <code>K=2</code> </td></tr>
+<tr valign="top"><td><code>prob</code></td>
+<td>
+prior probabilities if required for starting values</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+the data frame nedded for the fit. Note that this is compulsory if <code>pi.formula</code> is used.</td></tr>
+<tr valign="top"><td><code>control</code></td>
+<td>
+This argument sets the control parameters for the EM iterations algorithm.
+The default setting are given in the <code>MX.control</code> function  </td></tr>
+<tr valign="top"><td><code>g.control</code></td>
+<td>
+This argument can be used to pass to <code>gamlss()</code> control parameters, as in
+<code>gamlss.control</code> </td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+the number of fits required in <code>gamlssMXfits()</code></td></tr>
+<tr valign="top"><td><code>zero.component</code></td>
+<td>
+whether zero component models exist, default is <code>FALSE</code></td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos and Bob Rigby
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,
+(with discussion), <EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('gamlss', 'gamlss.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss</a></code>, <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+library(MASS)
+data(geyser)
+# fitting 2 finite normal mixtures 
+m1&lt;-gamlssMX(waiting~1,data=geyser,family=NO, K=2)
+#fitting 2 finite gamma mixtures 
+m2&lt;-gamlssMX(waiting~1,data=geyser,family=GA, K=2)
+# fitting a model for pi
+# first create a data frame
+geyser1&lt;-matrix(0,ncol=2, nrow=298)
+geyser1[,1] &lt;-geyser$waiting[-1]
+geyser1[,2] &lt;-geyser$duration[-299]
+colnames(geyser1)&lt;- c("waiting", "duration")
+geyser1 &lt;-data.frame(geyser1)
+# get the best of 5 fits
+m3&lt;-gamlssMXfits(n=5, waiting~1, pi.formula=~duration, data=geyser1,family=NO, K=2)
+m3
+
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.mx</em> version 2.0-0 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

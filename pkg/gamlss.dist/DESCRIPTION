@@ -1,8 +1,8 @@
 Package: gamlss.dist
 Type: Package
 Title: Distributions to be used for GAMLSS modelling.
-Version: 4.0-5
-Date: 2011-04-29
+Version: 4.0-6
+Date: 2011-06-23
 Author: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>, Bob
         Rigby <r.rigby@londonmet.ac.uk> with contributions from
         Calliope Akantziliotou, Gillian Heller, Raydonal Ospina

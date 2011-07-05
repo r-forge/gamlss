@@ -1,0 +1,22 @@
+
+# functions
+
+export(gen.trun, trun.d, trun.p,trun.q,trun.r,gen.trun, trun)
+
+
+
+
+# datasets #export(lange)
+
+
+# needed for gamlss family
+#export(as.family, gamlss.family, gamlss.family.default, as.gamlss.family)
+
+# documented but unexported methods
+
+
+#importFrom(graphics, pairs, plot)
+
+#useDynLib(gamlss)
+
+#S3method(finterp, gamlss.nl)

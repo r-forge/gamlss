@@ -72,7 +72,13 @@ export(dBCCG, pBCCG, qBCCG, rBCCG, BCCG, BCCGuntr,
        PIG, dPIG, pPIG, qPIG, rPIG,
        SI, dSI, pSI, qSI, rSI,
        ZAIG, dZAIG, pZAIG, qZAIG, rZAIG, plotZAIG, meanZAIG,
-       ZAGA, dZAGA, pZAGA, qZAGA, rZAGA, plotZAGA, meanZAGA)
+       ZAGA, dZAGA, pZAGA, qZAGA, rZAGA, plotZAGA, meanZAGA,
+       GE, dGE, pGE, qGE, rGE,
+       ING, dING, pING, qING,rING,
+       PA2, dPA2, pPA2, qPA2, rPA2,
+       WA1, dWA1, pWA1, qWA1, rWA1,
+      YU1, dYU1, pYU1, qYU1, rYU1,
+      YU2, dYU2, pYU2, qYU2, rYU2)
 
 # needed for gamlss family
 export(as.family, gamlss.family, gamlss.family.default, as.gamlss.family,

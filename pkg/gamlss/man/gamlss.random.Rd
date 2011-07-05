@@ -8,15 +8,13 @@ It is not intended to be called directly by users.
 The function \code{gamlss.radom} is similar to the GAMLSS function \code{gamlss.ra}.
 }
 \usage{
-gamlss.random(x, y, w, df = NULL, lambda = 0)
+gamlss.random(x, y, w)
 }
 
 \arguments{
   \item{x}{the explanatory design matrix }
   \item{y}{the response variable }
   \item{w}{iterative weights }
-  \item{df}{effective degrees of freedom }
-  \item{lambda}{the smoothing parameter}
 }
 
 \value{Returns a list with

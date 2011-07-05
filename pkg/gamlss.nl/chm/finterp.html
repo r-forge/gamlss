@@ -1,0 +1,392 @@
+<html><head><title>Formula Interpreter</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>finterp(gamlss.nl)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   finterp">
+<param name="keyword" value="R:   finterp.default">
+<param name="keyword" value="R:   fmobj">
+<param name="keyword" value=" Formula Interpreter">
+</object>
+
+
+<h2>Formula Interpreter</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function is taken from Jim Lindsey's R package <code>rmutil</code>. 
+</p>
+<p>
+What follows is taken from the help file of <code>rmutil</code>. 
+Note that not all the functionalities of <code>finterp</code> are implemented in <code>nlgamlss</code>. 
+</p>
+<p>
+<code>finterp</code> translates a model formula into a function of the
+unknown parameters or of a vector of them. Such language formulae
+can either be in Wilkinson and Rogers notation or be expressions
+containing both known (existing) covariates and unknown (not
+existing) parameters. In the latter, factor variables cannot be
+used and parameters must be scalars.
+</p>
+<p>
+The covariates in the formula are sought in the environment or in
+the data object provided. If the data object has class, 'repeated'
+or 'response', then the key words, 'times' will use the response
+times from the data object as a covariate, 'individuals' will use
+the index for individuals as a factor covariate, and 'nesting' the
+index for nesting as a factor covariate. The latter two only work
+for W&amp;R notation.
+</p>
+<p>
+Note that, in parameter displays, formulae in Wilkinson and Rogers
+notation use variable names whereas those with unknowns use the
+names of these parameters, as given in the formulae, and that the
+meaning of operators (*, /, :, etc.) is different in the two
+cases.
+</p>
+<p>
+The function <code>fmobj</code> inspects a formula and returns a list containing the
+objects referred to, with indicators as to which are unknown
+parameters, covariates, factor variables, and functions.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+finterp.default(.z, .envir = parent.frame(), .formula = FALSE, 
+       .vector = TRUE, .args = NULL, .start = 1, 
+       .name = NULL, .expand = TRUE, .intercept = TRUE, 
+       .old = NULL, .response = FALSE, ...)
+finterp(.z, ...)
+fmobj(z, envir = parent.frame())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.z</code></td>
+<td>
+A model formula beginning with ~, either in Wilkinson and
+Rogers notation or containing unknown parameters. If it
+contains unknown parameters, it can have several lines so
+that, for example, local variables can be assigned temporary
+values. In this case, enclose the formula in curly brackets </td></tr>
+<tr valign="top"><td><code>.envir</code></td>
+<td>
+The environment in which the formula is to be interpreted or
+a data object of class, 'repeated', 'tccov', or 'tvcov'. </td></tr>
+<tr valign="top"><td><code>.formula</code></td>
+<td>
+If TRUE and the formula is in Wilkinson and Rogers notation,
+just returns the formula.</td></tr>
+<tr valign="top"><td><code>.vector</code></td>
+<td>
+If FALSE and the formula contains unknown parameters, the
+function returned has them as separate arguments. If TRUE, it
+has one argument, the unknowns as a vector, unless certain
+parameter names are specified in '.args'. Always TRUE if
+'.envir' is a data object. </td></tr>
+<tr valign="top"><td><code>.args</code></td>
+<td>
+If '.vector' is TRUE, names of parameters that are to be
+function arguments and not included in the vector. </td></tr>
+<tr valign="top"><td><code>.start</code></td>
+<td>
+The starting index value of the parameter vector in the
+function returned when '.vector' is TRUE. </td></tr>
+<tr valign="top"><td><code>.name</code></td>
+<td>
+Character string giving the name of the data object specified
+by '.envir'. Ignored unless the latter is such an object and
+only necessary when 'finterp' is called within other
+functions.</td></tr>
+<tr valign="top"><td><code>.expand</code></td>
+<td>
+If TRUE, expand functions with only time-constant covariates
+to return one value per observation instead of one value per
+individual. Ignored unless '.envir' is an object of class,
+'repeated'. </td></tr>
+<tr valign="top"><td><code>.intercept</code></td>
+<td>
+If W&amp;R notation is supplied and '.intercept=F', a model
+function without intercept is returned. </td></tr>
+<tr valign="top"><td><code>.old</code></td>
+<td>
+The name of an existing object of class 'formulafn' which has
+common parameters with the one being created, or a list of
+such objects. Only used if '.vector'=TRUE. The value of
+'.start' should ensure that there is no conflict in indexing
+the vector. </td></tr>
+<tr valign="top"><td><code>.response</code></td>
+<td>
+If TRUE, any response variable can be used in the function.
+If FALSE, checks are made that the response is not also used
+as a covariate.</td></tr>
+<tr valign="top"><td><code>z</code></td>
+<td>
+A model formula beginning with ~, either in Wilkinson and
+Rogers notation or containing unknown parameters.</td></tr>
+<tr valign="top"><td><code>envir</code></td>
+<td>
+The environment in which the formula is to be interpreted.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+A function, of class <code>formulafn</code>, of the unknown parameters or of
+a vector of them is returned. Its attributes give the formula
+supplied, the model function produced, the covariate names, the
+parameter names, and the range of values of the index of the
+parameter vector. If 'formula' is TRUE and a Wilkinson and Rogers
+formula was supplied, it is simply returned instead of creating a
+function.
+<br>
+For <code>fmobj</code> a list, of class 'fmobj', containing a character vector
+('objects') with the names of the objects used in a formula, and
+logical vectors indicating which are unknown parameters
+('parameters'), covariates ('covariates'), factor variables
+('factors'), and functions ('functions') is returned.</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+J.K. Lindsey
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://popgen.unimaas.nl/~jlindsey/index.html: Jim Lindsey web page">http://popgen.unimaas.nl/~jlindsey/index.html: Jim Lindsey web page</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('utils', 'help.html')" style="text-decoration: underline; color: blue; cursor: hand">help</a></code>, ~~~
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# From Jim Lindsey
+x1 &lt;- rpois(20,2)
+x2 &lt;- rnorm(20)
+#
+# Wilkinson and Rogers formula with three parameters
+fn1 &lt;- finterp(~x1+x2)
+fn1
+fn1(rep(2,3))
+# the same formula with unknowns
+fn2 &lt;- finterp(~b0+b1*x1+b2*x2)
+fn2
+fn2(rep(2,3))
+#
+# nonlinear formulae with unknowns
+# log link
+fn2a &lt;- finterp(~exp(b0+b1*x1+b2*x2))
+fn2a
+fn2a(rep(0.2,3))
+# parameters common to two functions
+fn2b &lt;- finterp(~c0+c1*exp(b0+b1*x1+b2*x2), .old=fn2a, .start=4)
+fn2b
+# function returned also depends on values of another function
+fn2c &lt;- finterp(~fn2+c1*exp(b0+b1*x1+b2*x2), .old=fn2a,
+        .start=4, .args="fn2")
+fn2c
+args(fn2c)
+fn2c(rep(0.2,4),fn2(rep(2,3)))
+#
+# compartment model
+times &lt;- 1:20
+# exp() parameters to ensure that they are positive
+fn3 &lt;- finterp(~exp(absorption-volume)/(exp(absorption)-
+        exp(elimination))*(exp(-exp(elimination)*times)-
+        exp(-exp(absorption)*times)))
+fn3
+fn3(log(c(0.3,3,0.2)))
+# a more efficient way
+# (note that parameters do not appear in the same order)
+form &lt;- ~{
+        ka &lt;- exp(absorption)
+        ke &lt;- exp(elimination)
+        ka*exp(-volume)/(ka-ke)*(exp(-ke*times)-exp(-ka*times))}
+fn3a &lt;- finterp(form)
+fn3a(log(c(0.3,0.2,3)))
+#
+# Poisson density
+y &lt;- rpois(20,5)
+fn4 &lt;- finterp(~mu^y*exp(-mu)/gamma(y+1))
+fn4
+fn4(5)
+dpois(y,5)
+#
+# Poisson likelihood
+# mean parameter
+fn5 &lt;- finterp(~-y*log(mu)+mu+lgamma(y+1),.vector=FALSE)
+fn5
+likefn1 &lt;- function(p) sum(fn5(mu=p))
+nlm(likefn1,p=1)
+mean(y)
+# canonical parameter
+fn5a &lt;- finterp(~-y*theta+exp(theta)+lgamma(y+1),.vector=FALSE)
+fn5a
+likefn1a &lt;- function(p) sum(fn5a(theta=p))
+nlm(likefn1a,p=1)
+#
+# likelihood for Poisson log linear regression
+y &lt;- rpois(20,fn2a(c(0.2,1,0.4)))
+nlm(likefn1,p=1)
+mean(y)
+likefn2 &lt;- function(p) sum(fn5(mu=fn2a(p)))
+nlm(likefn2,p=c(1,0,0))
+# or
+likefn2a &lt;- function(p) sum(fn5a(theta=fn2(p)))
+nlm(likefn2a,p=c(1,0,0))
+#
+# likelihood for Poisson nonlinear regression
+y &lt;- rpois(20,fn3(log(c(3,0.3,0.2))))
+nlm(likefn1,p=1)
+mean(y)
+likefn3 &lt;- function(p) sum(fn5(mu=fn3(p)))
+nlm(likefn3,p=log(c(1,0.4,0.1)))
+#
+# envir as data objects
+# y &lt;- matrix(rnorm(20),ncol=5)
+#y[3,3] &lt;- y[2,2] &lt;- NA
+#x1 &lt;- 1:4
+#x2 &lt;- c("a","b","c","d")
+#resp &lt;- restovec(y)
+#xx &lt;- tcctomat(x1)
+#xx2 &lt;- tcctomat(data.frame(x1,x2))
+#z1 &lt;- matrix(rnorm(20),ncol=5)
+#z2 &lt;- matrix(rnorm(20),ncol=5)
+#z3 &lt;- matrix(rnorm(20),ncol=5)
+#zz &lt;- tvctomat(z1)
+#zz &lt;- tvctomat(z2,old=zz)
+#reps &lt;- rmna(resp, ccov=xx, tvcov=zz)
+#reps2 &lt;- rmna(resp, ccov=xx2, tvcov=zz)
+#rm(y, x1, x2 , z1, z2)
+#
+# repeated objects
+#
+# time-constant covariates
+# Wilkinson and Rogers notation
+#form1 &lt;- ~x1
+#print(fn1 &lt;- finterp(form1, .envir=reps))
+#fn1(2:3)
+#print(fn1a &lt;- finterp(form1, .envir=xx))
+#fn1a(2:3)
+#form1b &lt;- ~x1+x2
+#print(fn1b &lt;- finterp(form1b, .envir=reps2))
+#fn1b(2:6)
+#print(fn1c &lt;- finterp(form1b, .envir=xx2))
+#fn1c(2:6)
+# with unknown parameters
+#form2 &lt;- ~a+b*x1
+#print(fn2 &lt;- finterp(form2, .envir=reps))
+#fn2(2:3)
+#print(fn2a &lt;- finterp(form2, .envir=xx))
+#fn2a(2:3)
+#
+# time-varying covariates
+# Wilkinson and Rogers notation
+#form3 &lt;- ~z1+z2
+#print(fn3 &lt;- finterp(form3, .envir=reps))
+#fn3(2:4)
+#print(fn3a &lt;- finterp(form3, .envir=zz))
+#fn3a(2:4)
+# with unknown parameters
+#form4 &lt;- ~a+b*z1+c*z2
+#print(fn4 &lt;- finterp(form4, .envir=reps))
+#fn4(2:4)
+#print(fn4a &lt;- finterp(form4, .envir=zz))
+#fn4a(2:4)
+#
+# note: lengths of x1 and z2 differ
+# Wilkinson and Rogers notation
+#form5 &lt;- ~x1+z2                
+#print(fn5 &lt;- finterp(form5, .envir=reps))
+#fn5(2:4)
+# with unknown parameters
+#form6 &lt;- ~a+b*x1+c*z2
+#print(fn6 &lt;- finterp(form6, .envir=reps))
+#fn6(2:4)
+#
+# with times
+# Wilkinson and Rogers notation
+#form7 &lt;- ~x1+z2+times
+#print(fn7 &lt;- finterp(form7, .envir=reps))
+#fn7(2:5)
+#form7a &lt;- ~x1+x2+z2+times
+#print(fn7a &lt;- finterp(form7a, .envir=reps2))
+#fn7a(2:8)
+# with unknown parameters
+#form8 &lt;- ~a+b*x1+c*z2+e*times
+#print(fn8 &lt;- finterp(form8, .envir=reps))
+#fn8(2:5)
+#
+# with a variable not in the data object
+#form9 &lt;- ~a+b*z1+c*z2+e*z3
+#print(fn9 &lt;- finterp(form9, .envir=reps))
+#fn9(2:5)
+# z3 assumed to be an unknown parameter:
+#fn9(2:6)
+#
+# multiline formula
+#form10 &lt;- ~{
+#        tmp &lt;- exp(b)
+#        a+tmp*z1+c*z2+d*times}
+#print(fn10 &lt;- finterp(form10, .envir=reps))
+#fn10(2:5)
+# for fmobj
+ x1 &lt;- rpois(20,2)
+ x2 &lt;- rnorm(20)
+ x3 &lt;- gl(2,10)
+ #
+ # W&amp;R formula
+ fmobj(~x1+x2+x3)
+ #
+ # formula with unknowns
+ fmobj(~b0+b1*x1+b2*x2)
+ #
+ # nonlinear formulae with unknowns
+ # log link
+ fmobj(~exp(b0+b1*x1+b2*x2))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.nl</em> version 1.2-0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

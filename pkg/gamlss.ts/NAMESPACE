@@ -1,0 +1,18 @@
+# functions
+export(garmaFit, disSmo, disSmoA, disSmoQ, simRW)
+
+S3method(vcov, garma)
+S3method(print, garma)
+S3method(coef, garma)
+S3method(summary, garma)
+S3method(fitted, garma)
+
+
+
+S3method(fitted, disSmo)
+S3method(coef, disSmo)
+S3method(residuals, disSmo)
+S3method(AIC, disSmo)
+S3method(deviance, disSmo)
+S3method(plot, disSmo)
+S3method(print, disSmo)

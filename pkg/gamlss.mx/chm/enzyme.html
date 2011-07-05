@@ -1,0 +1,86 @@
+<html><head><title>Data used in gamlss.mx</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>enzyme(gamlss.mx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   enzyme">
+<param name="keyword" value="R:   brains">
+<param name="keyword" value=" Data used in gamlss.mx">
+</object>
+
+
+<h2>Data used in gamlss.mx</h2>
+
+
+<h3>Description</h3>
+
+<p>
+enzyme : The data comprise independent measurement of enzyme activity in the
+blood of 245 individuals. The data were analysed by Bechker <EM>at al.</EM> (1993).
+</p>
+<p>
+brains : the brain size, <code>brain</code>, and body weight, <code>body</code>,
+for 28 differnt animals.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+data(enzyme)
+data(brains)
+</pre>
+
+
+<h3>Format</h3>
+
+<p>
+enzyme :  data frame with 245 observations on the following variable <code>act</code>.
+</p>
+<p>
+brains : data frame with 28  observations on the following variables. <code>body</code>, <code>brain</code>
+</p>
+
+<dl>
+<dt><code>act</code></dt><dd>a numeric vector showing enzyme activity in the
+blood of 245 individuals.</dd>
+
+
+<dt><code>body</code></dt><dd>a numeric vector showing the body weight of 28 differnt animals</dd>
+<dt><code>brain</code></dt><dd>a numeric vector showing the brain size  of 28 differnt animals</dd>
+
+<p>
+</dl>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Source</h3>
+
+
+
+
+<h3>References</h3>
+
+
+
+
+<h3>Examples</h3>
+
+<pre>
+data(enzyme)
+hist(enzyme$act)
+data(brains)
+brains$lbrain&lt;-log(brains$brain)
+brains$lbody&lt;-log(brains$body)
+with(brains, plot(lbrain~lbody))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.mx</em> version 1.5-2 <a href="00Index.html">Index]</a></div>
+
+</body></html>

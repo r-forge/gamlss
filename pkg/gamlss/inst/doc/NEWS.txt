@@ -19,6 +19,9 @@ Question or suggestions about GAMLSS can be send to
 or
    r.rigby@londonmet.ac.uk
 ---------------------------------------------------------------------
+version 4.0.9
+
+1. the function random is modified to allow Local maximum likelihood estimation of the smoothing parameter lambda 
 
 version 4.0-8
 

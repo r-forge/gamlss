@@ -312,9 +312,9 @@ regpenEM <- function(y, X, w, lambda, order, D)
       colnames(BD) <- cname
          BD
           }
-#---------------------------------------------------
 #------------------------------------------------------------------
-#---------------------------------------------------
+#------------------------------------------------------------------
+#------------------------------------------------------------------
 # the main function starts here
 # get the attributes
  is.Factor <- FALSE # whether by is factor or variate
@@ -323,7 +323,8 @@ regpenEM <- function(y, X, w, lambda, order, D)
          D <- as.matrix(attr(x,"D")) # penalty
     lambda <- as.vector(attr(x,"lambda")) # lambda
         df <- as.vector(attr(x,"df")) # degrees of freedom
-    by.var <- attr(x,"by")
+    by.var <- if (is.null(xeval)) attr(x,"by")
+              else attr(x,"by")[seq(1,length(y))]
             if (!is.null(by.var)) 
                  {
                  if (is.factor(by.var))
@@ -357,9 +358,9 @@ startLambdaName <- as.character(attr(x, "NameForLambda"))
                 else (y/ifelse(by.var==0,0.0001,by.var)) 
                 }
 ## we need to know whether by.var is a factor or not
-## if is not a factor fit the models with weights --------------------   
- if (!is.Factor)
-  {
+## if is not a factor fit the models with weights --------------------VARIABLE-VARIABLE    
+if (!is.Factor)
+ {
 ## now the action depends on the values of lambda and df
 ##--------------------------------------------------------------------  
 ## case 1: if lambda is known just fit
@@ -492,16 +493,16 @@ startLambdaName <- as.character(attr(x, "NameForLambda"))
     pred <- drop(nx %*% fit$beta)
      }
      else
-     {# ????? this  need checking ??????????????
+     {
       ll <- dim(as.matrix(attr(x,"X")))[1]
       nx <- as.matrix(attr(x,"X"))[seq(length(y)+1,ll),]
     pred <- drop(nx %*% fit$beta)*by.var[seq(length(y)+1,ll)]
      }
      pred
      }  
-   }# if by is not a factor ends here -----------------------------------
-   else # here is if.Factor==TRUE     -----------------------------------
-   {
+ }# if by is NOT a FACTOR ends here -----------------------------------
+else  # here is if.Factor==TRUE     -----------------------------------FACTOR---FACTOR
+ {#    by  is a FACTOR
            nlev <- nlevels(by.var)
             lev <- levels(by.var)
             fit <- list(nlev)
@@ -523,9 +524,9 @@ startLambdaName <- as.character(attr(x, "NameForLambda"))
      #         fv[In] <- X[II,]%*%fit[[i]]$beta      
      #  } 
      ## note that looping or just fitting using regpenByFactor1 is equivalent 
-      fit <- regpenByFactor1(yvar, X, w, by.var, lambda, D)   
-      fv  <- fit$fv
-      edf <- fit$edf 
+            fit <- regpenByFactor1(yvar, X, w, by.var, lambda, D)   
+            fv  <- fit$fv
+            edf <- fit$edf 
      } # case 2: if lambda is estimated ----------------------------------
     else if (is.null(df[1])&&is.null(lambda[1])) 
      { #   
@@ -555,8 +556,7 @@ startLambdaName <- as.character(attr(x, "NameForLambda"))
               if (lambda[i]<1.0e-7) lambda[i]<-1.0e-7 # DS Saturday, April 11, 2009 at 14:18
               if (lambda[i]>1.0e+7) lambda[i]<-1.0e+7 # DS Wednesday, July 29, 2009 at 19:00
               if (abs(lambda[i]-lambda.old) < 1.0e-7||lambda[i]>1.0e7) break
-                    }
-                    
+                    }                  
             }
             assign(startLambdaName, lambda, envir=gamlss.env)       
           },
@@ -656,7 +656,7 @@ startLambdaName <- as.character(attr(x, "NameForLambda"))
         #fit3 <- regpenByFactor1(yvar, X, w, by.var, lambda, D)   
         # the error is here
          lev <- hat(sqrt(waug)*xaug,intercept=FALSE)[1:n] # get the hat matrix
-         lev <- (lev-.hat.WX(w,x)) # This has to checked???? 
+           lev <- (lev-.hat.WX(w,X)) # This has to checked???? 
          var <- lev/w   
      #if (any(is.na(fv))) browser()
      if (is.null(xeval)) # if no prediction 
@@ -665,11 +665,14 @@ startLambdaName <- as.character(attr(x, "NameForLambda"))
            lambda=lambda, coefSmo=list(coef=coefbeta, lambda=lambda, edf=sum(edf), EDF=edf, tau2=NULL, sig2=NULL, method=control$method) )
      }
      else
-     {# ????? this is needed ??????????????
-     ll <- dim(as.matrix(attr(x,"X")))[1]
-      nx <- as.matrix(attr(x,"X"))[seq(length(y)+1,ll),]
-    pred <- drop(nx %*% fit$beta)*by.var[seq(length(y)+1,ll)]
-    pred
+     {# Mikis 27-6-11
+        ll <- dim(as.matrix(attr(x,"X")))[1]                # length of original X
+        nx <- as.matrix(attr(x,"X"))[seq(length(y)+1,ll),]  # the x-values matrix
+       fac <- attr(x,"by")[seq(length(y)+1,ll)]             # get the new values of the factor 
+        BX <- FbyX(fac, nx)                                 # get the interaction design matrix 
+  longbeta <- as.vector(sapply(fit, function(l) l$beta))    # get the beta as a long vector 
+      pred <- drop(BX %*% longbeta)                         # get prediction
+      pred
      }       
    }    
 }

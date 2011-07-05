@@ -1,0 +1,146 @@
+<html><head><title>Generates Random Values from a Truncated Density Function of a gamlss.family Distribution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>trun.r(gamlss.tr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   trun.r">
+<param name="keyword" value=" Generates Random Values from a Truncated Density Function of a gamlss.family Distribution">
+</object>
+
+
+<h2>Generates Random Values from a Truncated Density Function of a gamlss.family Distribution</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Creates a function to generate randon values from a truncated probability density function created from a current GAMLSS family distribution
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+trun.r(par, family = "NO", type = c("left", "right", "both"), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>par</code></td>
+<td>
+a vector with one (for <code>left</code> or <code>right</code> truncation) or two elements for <code>both</code>  </td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+a <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code> object, which is used to define the distribution and the link functions of the various parameters. 
+The distribution families supported by <code>gamlss()</code> can be found in <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>.
+Functions such as BI() (binomial) produce a family object. </td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+whether <code>left</code>, <code>right</code> or in <code>both</code> sides truncation is required, (left is the default)  </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+Returns a r family function</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos <a href="mailto:d.stasinopoulos@londonmet.ac.uk">d.stasinopoulos@londonmet.ac.uk</a> and Bob Rigby <a href="mailto:r.rigby@londonmet.ac.uk">r.rigby@londonmet.ac.uk</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="trun.p.html">trun.p</a></code>, <code><a href="trun.q.html">trun.q</a></code>, <code><a href="trun.d.html">trun.d</a></code>, <code><a href="gen.trun.html">gen.trun</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# trucated r function
+# continuous
+#----------------------------------------------------------------------------------------
+# left
+test1&lt;-trun.r(par=c(0), family="TF", type="left")
+rr&lt;-test1(1000)
+hist(rr)
+#----------------------------------------------------------------------------------------
+# right
+test2 &lt;- trun.r(par=c(10), family="BCT", type="right")
+rr&lt;-test2(1000)
+hist(rr)
+#----------------------------------------------------------------------------------------
+# both
+test3&lt;-trun.r(par=c(-3,3), family="TF", type="both")
+rr&lt;-test3(1000)
+hist(rr)
+#----------------------------------------------------------------------------------------
+# discrete 
+# trucated r function
+# left
+test1&lt;-trun.r(par=c(0), family="PO", type="left")
+tN &lt;- table(Ni &lt;- test1(1000))
+ r &lt;- barplot(tN, col='lightblue')
+#----------------------------------------------------------------------------------------
+# right
+test2 &lt;- trun.r(par=c(10), family="NBI", type="right")
+tN &lt;- table(Ni &lt;- test2(1000))
+ r &lt;- barplot(tN, col='lightblue')
+tN &lt;- table(Ni &lt;- test2(1000,mu=5))
+  r &lt;- barplot(tN, col='lightblue')
+tN &lt;- table(Ni &lt;- test2(1000,mu=10, sigma=.1))
+  r &lt;- barplot(tN, col='lightblue')
+#----------------------------------------------------------------------------------------
+# both 
+test3&lt;-trun.r(par=c(0,10), family="NBI", type="both")
+ tN &lt;- table(Ni &lt;- test3(1000,mu=5))
+ r &lt;- barplot(tN, col='lightblue')
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.tr</em> version 1.8-1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

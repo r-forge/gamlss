@@ -1,0 +1,12 @@
+Package: gamlss.ts
+Description: The library for fitting time series GAMLSS models.
+Type: Package
+Title:  Time Series GAMLSS
+Version: 1.1
+Date: 2011-06-22
+Depends: R (>= 2.4.0), gamlss, gamlss.dist, gamlss.data, spam
+Author: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>
+Maintainer: Mikis Stasinopoulos <d.stasinopoulos@londonmet.ac.uk>
+License:  GPL-2 | GPL-3
+LazyLoad: yes
+URL: http://www.gamlss.org/

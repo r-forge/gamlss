@@ -1,0 +1,85 @@
+<html><head><title>The blood flow dataset.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>la(gamlss.nl)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   la">
+<param name="keyword" value=" The blood flow dataset.">
+</object>
+
+
+<h2>The blood flow dataset.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The blood flow dataset.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(la)</pre>
+
+
+<h3>Format</h3>
+
+<p>
+A data frame with 251 observations on the following 4 variables.
+<dl>
+<dt><code>bflow</code></dt><dd>the blood flow measured invasively using radioactively labelled micro-spheres</dd>
+<dt><code>PET60</code></dt><dd>is the blood flow measured non-invasively by positron emission tomography using a scan
+up to 60 seconds</dd>
+<dt><code>PETother</code></dt><dd>?</dd>
+<dt><code>PET510</code></dt><dd>is the blood flow measured non-invasively by positron emission tomography using a scan
+up to 510 seconds</dd>
+</dl>
+
+<h3>Details</h3>
+
+<p>
+The blood flow data were analyzed by Lange <EM>et al.</EM> (1989), Jones and Faddy (2003) and Rigby and Stasinopoulos (2006). 
+As response variables y the variables PET60, PETother, PET510
+can be used representing  blood flow
+measured non-invasively by positron emission tomography using a scan
+up to 60 seconds (PET60) or 510 second (PET510) respectively.  The explanatory variable x is the blood
+flow measured invasively using radioactively labelled micro-spheres.
+The distribution of y has previously been modelled by a normal (NO) and a  <EM>t</EM> family
+distribution (TF), Lange <EM>et al.</EM> (1989), and by a skew <EM>t</EM>
+distribution (ST), Jones and Faddy (2003) and by Rigby and Stasinopoulos (2006) using several three and four parameter distributions, 
+including the Box-Cox power exponential (BCPE), Rigby and Stasinopoulos (2004) and the Box-Cox t diastribution (BCT) .
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Jones, M. C. and Faddy, M. J. (2003). A skew extension of the t
+distribution, with applications. <EM>J. Roy. Statist.</EM> Soc B, <B>65</B>, 159-174.
+</p>
+<p>
+Lange, K. L., Little, R. J. A. and Taylor, J. M. G. (1989).
+Robust statistical modelling using the t distribution. <EM>J. Am. Statist.
+Ass.</EM>, <B>84</B>, 881-896. 
+</p>
+<p>
+Rigby, R.A. Stasinopoulos, D.M. (2006).  Using the Box-Cox <EM>t</EM> distribution in GAMLSS to mode skewnees and  and kurtosis.
+to appear in <EM>Statistical Modelling</EM>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(la)
+plot(PET60~bflow,data=la)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>gamlss.nl</em> version 2.0-0 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

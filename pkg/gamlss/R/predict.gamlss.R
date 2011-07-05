@@ -83,12 +83,13 @@ if (!(is.atomic(newdata) | inherits(newdata, "data.frame")))
        Call <- object$call
 ## we need both the old and the new data sets
 ## 
-data <- if (is.null(data))
+data<- data1 <- if (is.null(data))
            {
             if (!is.null(Call$data)) eval(Call$data)
             else stop("define the original data using the option data") 
            }
-        else data   
+        else data 
+
 ## keep only the same variables 
 ## this assumes that all the relevant variables will be in newdata
 ## what happens if not?
@@ -107,8 +108,8 @@ if (length(parform)==3)
              eval(attr(Terms, "variables")[[off.num + 1]], data) 
 ## model frame 
 # browser()
-         m <- model.frame(Terms, data, xlev = object[[paste(what,"xlevels",sep=".")]])
-## model design matrix y and w 
+         m <- model.frame(Terms, data, xlev = object[[paste(what,"xlevels",sep=".")]])           
+             ## model design matrix y and w 
          X <- model.matrix(Terms, data, contrasts = object$contrasts)
          y <- object[[paste(what,"lp",sep=".")]] 
          w <- object[[paste(what,"wt",sep=".")]] 
@@ -150,7 +151,6 @@ assign.coef <- attr(X, "assign")  ## X is a matrix
    collapse <- type != "terms"## !collapse is for whether type is not "terms"     
       Xpred <- X[!onlydata,]
       Xpred <- matrix(Xpred, nrow=nrows) # I think this probably is not needed sinse allready a matrix
-    
 # I will check this later      
   if (!collapse)       ## whether type=="terms" 
     { 
@@ -237,13 +237,16 @@ attr(new.m, "class") <- NULL
                          else object[[paste(what,"wv",sep=".")]] - object[[paste(what,"lp",sep=".")]]
        for(TT in smooth.labels)
          { 
-           #if (!(substr(TT,start=1,stop=2)%in%c("lo","vc")))
-           if (!is.matrix(m[[TT]]))
-            attributes(data[[TT]]) <- attributes(m[[TT]])
-          # attributes(new.m[[TT]]) <- attributes(m[,TT])
+            if (is.matrix(m[[TT]])) # the problem is that for some smoother the m[[TT]] is a matrix (for example pvc())
+             { # MS 27-6-11         # in this case  we have tp protect the dim attributes of data[[tt]]
+              nm <- names(attributes(m[[TT]])) # first we get the names of all attributes 
+              attributes(data[[TT]]) <- attributes(m[[TT]])[nm[-c(1,2)]]# then we pass all but
+             }                                 # 1 and 2 i.e. dim and names
+            else   attributes(data[[TT]]) <- attributes(m[[TT]])
                   Call <- smooth.calls[[TT]] # 
             Call$xeval <- substitute(new.m[[TT]], list(TT = TT))
                      z <- residuals + smo.mat[, TT]
+     # debug(gamlss.pvc)
           pred.s[, TT] <- eval(Call)
          }
         if(type == "terms")

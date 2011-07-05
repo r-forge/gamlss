@@ -1,0 +1,181 @@
+<html><head><title>Two dimensional Smooth scatter plots</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>scattersmooth(gamlss.util)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   scattersmooth">
+<param name="keyword" value=" Two dimensional Smooth scatter plots">
+</object>
+
+
+<h2>Two dimensional Smooth scatter plots</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The function produced two dimensional smooth scatter plots. The method used is described   in Eilers and Goeman (2004).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+scattersmooth(x, y, nbin = 100, lambda = 1, ndot = 500, 
+              csize = 0.3, ticks = TRUE, xlim = c(min(x), max(x)), 
+              ylim = c(min(y), max(y)), show = TRUE, 
+              save = FALSE, data = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+the x-variable
+</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+the y-variable 
+</td></tr>
+<tr valign="top"><td><code>nbin</code></td>
+<td>
+the number of bins required
+</td></tr>
+<tr valign="top"><td><code>lambda</code></td>
+<td>
+the smoothing  parameter
+</td></tr>
+<tr valign="top"><td><code>ndot</code></td>
+<td>
+how many data points to show
+</td></tr>
+<tr valign="top"><td><code>csize</code></td>
+<td>
+the size of the data points 
+</td></tr>
+<tr valign="top"><td><code>ticks</code></td>
+<td>
+whether ticks in the x and y axis appear in the plot
+</td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+the x limit  
+</td></tr>
+<tr valign="top"><td><code>ylim</code></td>
+<td>
+the y limit
+</td></tr>
+<tr valign="top"><td><code>show</code></td>
+<td>
+whether to show the graph or not
+</td></tr>
+<tr valign="top"><td><code>save</code></td>
+<td>
+whether to save the output as a  list or not 
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+the data file <code>data</code> 
+</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The function is similar to the function  <code>smoothScatter()</code> in <span class="pkg">graphics</span> but it used penelized bin smoother as
+described in Eilers and Goeman (2004) rather than kernel smoother.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+the function produces a two dimensional smooth plot and saves if <code>save=TRUE</code> a list with the following components:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>Hraw</code></td>
+<td>
+A nbin by nbin matrix containing the bin row data</td></tr>
+<tr valign="top"><td><code>Hsmooth</code></td>
+<td>
+A nbib by nbib matrix containing the smooth two dimensional histogram</td></tr>
+<tr valign="top"><td><code>xgrid</code></td>
+<td>
+the x-grid</td></tr>
+<tr valign="top"><td><code>ygrid</code></td>
+<td>
+the y-grid</td></tr>
+<tr valign="top"><td><code>xbin</code></td>
+<td>
+the bin for x values</td></tr>
+<tr valign="top"><td><code>ybin</code></td>
+<td>
+the bin for y values</td></tr>
+<tr valign="top"><td><code>nmiss</code></td>
+<td>
+number of missing values</td></tr>
+<tr valign="top"><td><code>seldots</code></td>
+<td>
+the values of the plotted dots</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Paul Eilers <a href="mailto:p.eilers@erasmusmc.nl">p.eilers@erasmusmc.nl</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Eilers, P. H. C. and Goeman, J. J. (2004). Enhancing scatterplots with smoothed density. <EM>Bioinformatics</EM>,
+Vol <B>20</B> no 5, pp 623-628.
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,(with discussion), 
+<EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M. Rigby R.A. (2007) Generalized additive models for location scale and shape (GAMLSS) in R.
+<EM>Journal of Statistical Software</EM>, Vol. <B>23</B>, Issue 7, Dec 2007, <a href="http://www.jstatsoft.org/v23/i07">http://www.jstatsoft.org/v23/i07</a>.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('graphics', 'smoothScatter.html')" style="text-decoration: underline; color: blue; cursor: hand">smoothScatter</a></code>,<code><a onclick="findlink('gamlss', 'gamlss.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+m &lt;- 1000
+set.seed(pi)
+phi &lt;- 2 * pi * runif(m)
+rho &lt;- rchisq(m, df = 6)
+x &lt;- cos(phi) * rho
+y &lt;- sin(phi) * rho
+H &lt;- scattersmooth(x, y)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.util</em> version 0.0-2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

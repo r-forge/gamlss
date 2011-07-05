@@ -7,7 +7,7 @@
 \alias{cy}
 \alias{cy.control}
 
-\title{Specify a Penalised Beta (Regression) Spline Fit in a GAMLSS Formula}
+\title{Specify a Penalised  B-Spline Fit in a GAMLSS Formula}
 \description{There are several function operating using penalised B-splines: \code{pb()},  \code{cy()}, \code{pvc()} and \code{ps()}.
 The functions take a vector and return it with several attributes. 
 The vector is used in the construction of the design matrix X used in the fitting.  The functions  do not do the  smoothing, 

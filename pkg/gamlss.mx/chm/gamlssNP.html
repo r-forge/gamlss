@@ -1,0 +1,371 @@
+<html><head><title>A function to fit finite mixtures using the gamlss family of distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>gamlssNP(gamlss.mx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   gamlssNP">
+<param name="keyword" value=" A function to fit finite mixtures using the gamlss family of distributions">
+</object>
+
+
+<h2>A function to fit finite mixtures using the gamlss family of distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function will fit a finite (or normal) mixture distribution where the kernel distribution can belong to 
+any gamlss family of distributions using the EM algorithm.
+The function is based  on functions <code>alldist()</code> and <code>allvc</code> of the <code>npmlreg</code> package of 
+Jochen Einbeck, John Hinde and Ross Darnell.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gamlssNP(formula, random = ~1, family = NO(), data = NULL, K = 4, 
+          mixture = c("np", "gq"), 
+          tol = 0.5, weights, pluginz, control = NP.control(...), 
+          g.control = gamlss.control(trace = FALSE), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+a formula defining the response and the fixed effects for the <code>mu</code> parameters</td></tr>
+<tr valign="top"><td><code>random</code></td>
+<td>
+a formula defining the random part of the model</td></tr>
+<tr valign="top"><td><code>family</code></td>
+<td>
+a gamlss family object </td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+the data frame which for this function is mandatory even if it the data are attached</td></tr>
+<tr valign="top"><td><code>K</code></td>
+<td>
+the number of mass points/integretion points (supported values are 1:10,20)  </td></tr>
+<tr valign="top"><td><code>mixture</code></td>
+<td>
+the mixing distribution, "np" for non-parametric or "gq" for Gaussian Quadrature</td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+the toletance scalar ussualy between zero and one</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+prior weights</td></tr>
+<tr valign="top"><td><code>pluginz</code></td>
+<td>
+optional   </td></tr>
+<tr valign="top"><td><code>control</code></td>
+<td>
+this sets the control parameters for the EM iterations algorithm.
+The default setting is the <code>NP.control</code> function </td></tr>
+<tr valign="top"><td><code>g.control</code></td>
+<td>
+the gamlss control function, <code>gamlss.control</code>, passed to the gamlss fit</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for extra arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The function <code>gamlssNP()</code> is a modification of the R functions 
+<code>alldist()</code> and <code>allvc</code> created by Jochen Einbeck and John Hinde. 
+Both functions were originally created by Ross Darnell (2002). Here the two 
+functions are merged to one <code>gamlssNP</code> and allows finite mixture from 
+gamlss family of distributions.
+</p>
+<p>
+The following are comments from the original Einbeck and  Hinde
+documentation. 
+</p>
+<p>
+"The nonparametric maximum likelihood (NPML) approach was 
+introduced in Aitkin (1996) as a tool to fit overdispersed 
+generalized linear models. Aitkin (1999) extended this method to 
+generalized linear models with shared random effects arising through 
+variance component or repeated measures structure. Applications are 
+two-stage sample designs, when firstly the primary sampling units 
+(the upper-level units, e.g. classes) and then the secondary 
+sampling units (lower-level units, e.g. students) are selected, or 
+longitudinal data. 
+Models of this type have also been referred to as 
+multi-level models (Goldstein, 2003). This R function is restricted 
+to 2-level models. The idea of NPML is to approximate the unknown 
+and unspecified distribution of the random effect by a discrete 
+mixture of k exponential family densities, leading to a simple 
+expression of the marginal likelihood, which can then be maximized 
+using a standard EM algorithm. When option 'gq' is set, then 
+Gauss-Hermite masses and mass points are used and considered as 
+fixed, otherwise they serve as starting points for the EM algorithm. 
+The position of the starting points can be concentrated or extended 
+by setting tol smaller or larger than one, respectively. Variance 
+component models with random coefficients (Aitkin, Hinde &amp; Francis, 
+2005, p. 491) are also possible, in this case the option 
+random.distribution is restricted to the setting 'np' . The weights 
+have to be understood as frequency weights, i.e. setting all weights 
+equal to 2 will duplicate each data point and hence double the 
+disparity and deviance. Warning: There might be some options and 
+circumstances which had not been tested and where the weights do not 
+work."
+Note that in keeping with the gamlss notation disparity is called global deviance.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The function <code>gamlssNP</code> produces an object of class "gamlssNP". 
+This object contain several components. 
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>family</code></td>
+<td>
+the name of the gamlss family</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+the type of distribution which in this case is "Mixture" </td></tr>
+<tr valign="top"><td><code>parameters</code></td>
+<td>
+the parameters for the kernel gamlss family distribution</td></tr>
+<tr valign="top"><td><code>call</code></td>
+<td>
+the call of the gamlssNP function</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+the response variable</td></tr>
+<tr valign="top"><td><code>bd</code></td>
+<td>
+the binomial demominator, only for BI and BB models</td></tr>
+<tr valign="top"><td><code>control</code></td>
+<td>
+the NP.control settings</td></tr>
+<tr valign="top"><td><code>weights</code></td>
+<td>
+the vector of weights of te expanded fit</td></tr>
+<tr valign="top"><td><code>G.deviance</code></td>
+<td>
+the global deviance</td></tr>
+<tr valign="top"><td><code>N</code></td>
+<td>
+the number of observations in the fit</td></tr>
+<tr valign="top"><td><code>rqres</code></td>
+<td>
+a function to calculate the normalized (randomized) quantile
+residuals of the object (here is the gamlss object rather than gamlssNP and it should change??)</td></tr>
+<tr valign="top"><td><code>iter</code></td>
+<td>
+the number of external iterations in the last gamlss fitting (?? do we need this?)</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+the type of the distribution or the response variable here set to "Mixture"</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+which algorithm is used for the gamlss fit, RS(), CG() or mixed()</td></tr>
+<tr valign="top"><td><code>contrasts</code></td>
+<td>
+the type of contrasts use in the fit</td></tr>
+<tr valign="top"><td><code>converged</code></td>
+<td>
+whether the gamlss fit has  converged</td></tr>
+<tr valign="top"><td><code>residuals</code></td>
+<td>
+the normalized (randomized) quantile residuals of the model</td></tr>
+<tr valign="top"><td><code>mu.fv</code></td>
+<td>
+the fitted values of the extended mu model, also  sigma.fv, nu.fv,
+tau.fv for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.lp</code></td>
+<td>
+the linear predictor of the extended mu model, also  sigma.lp, nu.lp,
+tau.lp for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.wv</code></td>
+<td>
+the working variable of the extended mu model, also  sigma.wv, nu.wv,
+tau.wv for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.wt</code></td>
+<td>
+the working weights of the mu model, also  sigma.wt, nu.wt,
+tau.wt for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.link</code></td>
+<td>
+the link function for the mu model, also  sigma.link,
+nu.link, tau.link for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.terms</code></td>
+<td>
+the terms for the mu model, also  sigma.terms, nu.terms,
+tau.terms for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.x</code></td>
+<td>
+the design matrix for the mu, also  sigma.x, nu.x, tau.x for
+the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.qr</code></td>
+<td>
+the QR decomposition of the mu model, also sigma.qr, nu.qr,
+tau.qr for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.coefficients</code></td>
+<td>
+the linear coefficients of the mu model, also 
+sigma.coefficients, nu.coefficients, tau.coefficients for the
+other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.formula</code></td>
+<td>
+the formula for the mu model, also  sigma.formula,
+nu.formula, tau.formula for the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.df</code></td>
+<td>
+the mu degrees of freedom also  sigma.df, nu.df, tau.df for
+the other parameters if present</td></tr>
+<tr valign="top"><td><code>mu.nl.df</code></td>
+<td>
+the non linear degrees of freedom, also sigma.nl.df,
+nu.nl.df, tau.nl.df for the other parameters if present</td></tr>
+<tr valign="top"><td><code>df.fit</code></td>
+<td>
+the total degrees of freedom use by the model</td></tr>
+<tr valign="top"><td><code>df.residual</code></td>
+<td>
+the residual degrees of freedom left after the model is
+fitted</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+the original data set</td></tr>
+<tr valign="top"><td><code>EMiter</code></td>
+<td>
+the number of EM iterations</td></tr>
+<tr valign="top"><td><code>EMconverged</code></td>
+<td>
+whether the EM has converged</td></tr>
+<tr valign="top"><td><code>allresiduals</code></td>
+<td>
+the residuas for the long fit</td></tr>
+<tr valign="top"><td><code>mass.points</code></td>
+<td>
+the estimates mass point (if "np" mixture is used)</td></tr>
+<tr valign="top"><td><code>K</code></td>
+<td>
+the number of mass points used</td></tr>
+<tr valign="top"><td><code>post.prob</code></td>
+<td>
+contains a matrix of posteriori probabilities,</td></tr>
+<tr valign="top"><td><code>prob</code></td>
+<td>
+the estimated mixture probalilities</td></tr>
+<tr valign="top"><td><code>aic</code></td>
+<td>
+the Akaike information criterion </td></tr>
+<tr valign="top"><td><code>sbc</code></td>
+<td>
+the Bayesian information criterion</td></tr>
+<tr valign="top"><td><code>formula</code></td>
+<td>
+the formula used in the expanded fit</td></tr>
+<tr valign="top"><td><code>random</code></td>
+<td>
+the random effect formula</td></tr>
+<tr valign="top"><td><code>pweights</code></td>
+<td>
+prior weights</td></tr>
+<tr valign="top"><td><code>ebp</code></td>
+<td>
+the Empirical Bayes Predictions (Aitkin, 1996b) on the scale of the
+linear predictor</td></tr>
+</table>
+<p>
+
+<br>
+Note that in case of Gaussian quadrature, the coefficient given at 'z' in coefficients corresponds
+to the standard deviation of the mixing distribution. 
+<br>
+As a by-product, gamlssNP produces a plot showing the global deviance against the iteration number. 
+Further, a plot with the EM trajectories is given. 
+The x-axis corresponds to the iteration number, and the y-axis to the value of the mass points at a particular iteration. 
+This plot is not produced when mixture is set to "gq"</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mikis Stasinopoulos based on function created by Jochen Einbeck John Hinde and Ross Darnell
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Aitkin, M. and Francis, B. (1995). Fitting overdispersed generalized linear models by 
+nonparametric maximum likelihood. GLIM Newsletter 25 , 37-45.
+</p>
+<p>
+Aitkin, M. (1996a). A general maximum likelihood analysis of overdispersion in generalized linear models. 
+Statistics and Computing 6 , 251-262.
+</p>
+<p>
+Aitkin, M. (1996b). Empirical Bayes shrinkage using posterior random effect means from nonparametric maximum 
+likelihood estimation in general random effect models. Statistical Modelling: 
+Proceedings of the 11th IWSM 1996 , 87-94.
+</p>
+<p>
+Aitkin, M., Francis, B. and Hinde, J. (2005) Statistical Modelling in GLIM 4. Second Edition, 
+Oxford Statistical Science Series, Oxford, UK.
+</p>
+<p>
+Einbeck, J. &amp; Hinde, J. (2005). A note on NPML estimation for exponential family regression models 
+with unspecified dispersion parameter. Technical Report IRL-GLWY-2005-04, National University of Ireland, Galway.
+</p>
+<p>
+Einbeck, J. Darnell R. and  Hinde J. (2006) npmlreg: Nonparametric maximum likelihood estimation for random effect
+models, R package version 0.34
+</p>
+<p>
+Hinde, J. (1982). Compound Poisson regression models. Lecture Notes in Statistics 14 ,109-121. 
+</p>
+<p>
+Rigby, R. A. and  Stasinopoulos D. M. (2005). Generalized additive models for location, scale and shape,
+(with discussion), <EM>Appl. Statist.</EM>, <B>54</B>, part 3, pp 507-554.
+</p>
+<p>
+Stasinopoulos D. M., Rigby R.A. and Akantziliotou C. (2003) Instructions on how to use the GAMLSS package in R.
+Accompanying documentation in the current GAMLSS  help files, (see also  <a href="http://www.gamlss.com/">http://www.gamlss.com/</a>).
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('gamlss', 'gamlss.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss</a></code>, <code><a onclick="findlink('gamlss', 'gamlss.family.html')" style="text-decoration: underline; color: blue; cursor: hand">gamlss.family</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(enzyme)
+# equivalent model using gamlssNP
+mmNP1 &lt;- gamlssNP(act~1, data=enzyme, random=~1,family=NO, K=2)
+mmNP2 &lt;- gamlssNP(act~1, data=enzyme, random=~1, sigma.fo=~MASS, family=NO, K=2)
+AIC(mmNP1, mmNP2)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>gamlss.mx</em> version 2.0-0 <a href="00Index.html">Index</a>]</div>
+
+</body></html>
